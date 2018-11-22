@@ -39,7 +39,11 @@ export default {
 
 <style scoped>
 .my-footer{
-    margin: 0 auto;
+    position: relative;
+    bottom: 0;
+    left: 50%;
+    margin-left: -450px;
+    text-align: center;
     width: 900px;
 }
 

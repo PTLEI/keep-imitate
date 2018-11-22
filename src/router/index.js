@@ -25,13 +25,16 @@ export default new Router({
       name: 'movement',
       component: Movement,
       children: [
-        { path: '/Movement/MoveShow', component: MoveShow}
+        { path: 'MoveShow',
+          name: 'moveshow',
+          component: MoveShow}
       ]
     },
     {
       path: '/Training',
       name: 'training',
       component: Training
-    }
+    },
+    
   ]
 })

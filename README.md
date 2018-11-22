@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+# keep-imitate
+keep-imitate
+>>>>>>> 990d7e9df9f8f0073240c919783b38f6afabae0f
 # keep-router-s
 
 > A Vue.js project

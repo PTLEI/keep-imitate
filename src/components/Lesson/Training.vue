@@ -28,6 +28,7 @@ export default {
 <style scoped>
 div{
     display: block;
+    margin: 0;
 }
 .training-class-content{
     margin: 0 auto;

@@ -6,7 +6,7 @@
         </div>
         <ul class="move-list clearfix">
             <li>
-                <router-link to="/Movement/MoveShow">
+                <router-link :to="{ name: 'moveshow'}">
                     <div class="img">
                         <img src="static/img/55963b0e73800000.png" >
                     </div>

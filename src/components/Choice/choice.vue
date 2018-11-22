@@ -83,7 +83,6 @@ export default {
 <style scoped>
 .choice-content{
     display: block;
-    position: relative;
     margin: 0 auto;
     width: 800px;
 }
