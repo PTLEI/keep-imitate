@@ -3,8 +3,7 @@
         :default-active="activeIndex"
         class="el-menu-demo"
         mode="horizontal"
-        @select="handleSelect"
-        >
+        @select="handleSelect">
         <el-menu-item index="1">
             <router-link to="/">首页</router-link>
         </el-menu-item>
@@ -16,12 +15,12 @@
             <el-menu-item index="3-1">
                 <router-link to="/Training">课程分类</router-link>
             </el-menu-item>
-            <el-menu-item index="3-2" class="">
+            <el-menu-item index="3-2">
                 <router-link to="/Movement">动作分类</router-link>
             </el-menu-item>
         </el-submenu>
-        <el-menu-item index="4" class="login">
-            <router-link to="/MoveShow">登陆/注册</router-link>
+        <el-menu-item index="4">
+            <router-link to="/Movement">登陆/注册</router-link>
         </el-menu-item>
     </el-menu>
 </template>

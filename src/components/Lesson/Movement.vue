@@ -90,6 +90,13 @@
 </template>
 <script>
 export default {
+    data() {
+        return{
+            moveName: "",
+            imgSrc: "",
+            moveRouter: "",
+        };
+    },
 }
 </script>
 
