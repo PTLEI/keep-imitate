@@ -5,7 +5,7 @@
                 <h2>课程分类</h2>
                 <p>丰富的训练课程，规范你的训练过程</p>
             </div>
-            <ul class="class-list clearfix"> 
+            <ul class="class-list clearfix">
                 <li></li>
                 <li></li>
                 <li></li>
@@ -21,7 +21,7 @@
 </template>
 <script>
 export default {
-    
+
 }
 </script>
 
@@ -38,7 +38,7 @@ div{
 .title{
     width: 100%;
     text-align: center;
-    margin: 20px auto;   
+    margin: 20px auto;
 }
 .title h2{
     color: #24c789;
@@ -69,7 +69,7 @@ div{
     padding-bottom: 36px;
 }
 .check-all p{
-    
+
     color: #999;
     font-size: 12px;
     margin-bottom: 12px;

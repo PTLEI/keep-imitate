@@ -21,7 +21,7 @@
                             <img  v-lazy="choiceInfo.src">
                             <span>{{choiceInfo.content}}</span>
                         </a>
-                    </li> 
+                    </li>
                 </ul>
             </section>
             <section class="wrapper">
@@ -44,7 +44,7 @@ import carousel from '@/components/Carousel'
 export default {
     name:'choice',
     components:{
-       carousel 
+       carousel
     },
     data () {
         return {
@@ -70,7 +70,7 @@ export default {
             }],
             choice3:[{
                 src: "/static/img/carousel3.jpg",
-                content: "这是最下边的一组了" 
+                content: "这是最下边的一组了"
             }, {
                 src: "/static/img/carousel4.jpg",
                 content: "这是最下边的一组了"

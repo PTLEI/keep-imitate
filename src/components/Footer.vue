@@ -26,19 +26,21 @@
                 </div>
                 <div class="help"></div>
             </div>
-            
+
         </div>
     </footer>
 </template>
 
 <script>
 export default {
-    
+
 }
 </script>
 
 <style scoped>
 .my-footer{
+    margin: 0 auto;
+    //??????????
     position: relative;
     bottom: 0;
     left: 50%;
@@ -51,10 +53,10 @@ export default {
 
 .info-left{
     float: left;
-    
+
 }
 .footer-list{
-    
+
 }
 .footer-list a{
     display: inline-block;

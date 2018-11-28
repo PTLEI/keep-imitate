@@ -34,7 +34,6 @@ export default new Router({
       path: '/Training',
       name: 'training',
       component: Training
-    },
-    
+    }
   ]
 })
