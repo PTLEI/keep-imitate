@@ -1,5 +1,6 @@
 <template>
     <div id="my-move">
+        <router-view/>
         <div class="title">
             <h2>动作库</h2>
             <p>动作的规范不但可以更高效的达到训练目的更能减少运动损伤</p>

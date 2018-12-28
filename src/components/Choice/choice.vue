@@ -131,12 +131,15 @@ li{
 .choice-carousel{
     width: 100%;
 }
+.carousel-img{
+    height: 100%;
+}
 .imgshow{
     display:block;
 }
 img{
-    max-width: 350px;
-    max-height: 300px;
+    width: 100%;
+    height: 100%;
 }
 a{
     text-decoration: none;

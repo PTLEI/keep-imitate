@@ -1,31 +1,29 @@
 <template>
     <div id="Index-myone">
-        <carousel></carousel>
-
+        <carousel />
         <section class="training-index">
           <h3>量体裁衣 & 多种健身训练供你选择</h3>
           <h4>训练计划针对不同人群、各种器械和阶段健身目标组合编排，适用最广泛的健身场景。</h4>
-          <div class="training-wrap">
+          <div class="training-wrap" style="background-image: url(static/img/background-img/storebg.jpg);">
               <div class="training-block">
                   <a href="#" class="training-item">
-                      <div class="training-detail">
+                      <div class="training-detail" style="background-image: url(static/img/index_img1.jpg)">
                           <div class="training-title">瘦腿训练</div>
-                          <div>13分钟 49千卡</div>
+                          <div style="text-align: left">13分钟 49千卡</div>
                           <div class="training-population">48，385，041人训练</div>
                       </div>
                   </a>
                   <a href="#" class="training-item">
-                      <div class="training-detail">
+                      <div class="training-detail" style="background-image: url(static/img/index_img2.jpg)">
                           <div class="training-title">马甲线养成</div>
-                          <div>12分钟 61千卡</div>
+                          <div style="text-align: left">12分钟 61千卡</div>
                           <div class="training-population">49，252，615人训练</div>
-                          <!-- <img src="static\img\Index_img1.jpg" > -->
                       </div>
                   </a>
                   <a href="#" class="training-item">
-                      <div class="training-detail">
+                      <div class="training-detail" style="background-image: url(static/img/index_img3.jpg)">
                           <div class="training-title">瑜伽·身体韵律</div>
-                          <div>32分钟 135千卡</div>
+                          <div style="text-align: left">32分钟 135千卡</div>
                           <div class="training-population">928，978人训练</div>
                       </div>
                   </a>
@@ -38,11 +36,11 @@
         <section class="run-index">
            <h3>户外跑步 & 精准跑步记录，让你的跑步更加系统</h3>
            <h4>精准跑步路线记录，跑前热身与跑后拉伸，Keep 提供更加完善和专业的跑步指导。</h4>
-           <div class="run-wrap">
+           <div class="run-wrap"  style="background-image: url(static/img/background-img/runbg.jpg);">
                <div class="run-wrap-inner">
                    <div class="run-block">
                         <div class="run-speed"><img src="static/img/index_img4.jpg" ></div>
-                        <div class="run-frequency"><img src="static/img/index_img5.jpg" ></div>
+                        <div class="run-frequency"><img src="static/img/runchart.png" ></div>
                     </div>
                </div>
            </div>
@@ -64,7 +62,7 @@
         <section class="shop-index">
             <h3>品牌装备 & 商城，伴你尽兴挥汗</h3>
             <h4>Keep 品牌服饰、器械及智能装备，打破 App 边界成为你触手可及的运动伙伴。</h4>
-            <div class="shop-wrap">
+            <div class="shop-wrap" style="background-image: url(static/img/background-img/storebg.jpg);">
                 <div class="shop-wrap-inner">
                     <div class="shop-pic1"></div>
                     <div class="shop-pic2"></div>
@@ -125,6 +123,17 @@ h4{
     width: 300px;
     /* background-image: url('../../static/img/index_img1.jpg'); */
 }
+.training-title{
+    font-size: 20px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    text-align: left
+}
+.training-population{
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+}
 a .training-detail{
     position: relative;
     height: 100%;
@@ -134,7 +143,10 @@ a .training-detail{
     font-size: 14px;
     box-sizing: border-box;
     margin-top: 10px;
+    background-size: 100%;
+    padding: 20px;
 }
+
 
 /* 跑步块 ***********************************/
 .run-wrap-inner{

@@ -1,5 +1,5 @@
 <template>
-  <el-carousel height="500px" :interval="5000" arrow="always">
+  <el-carousel :height="height" :interval="5000" arrow="always">
     <el-carousel-item v-for="(item,index) in imgInfo" :key="index">
       <div class="carousel-img">
         <img v-lazy="item.src">
@@ -12,10 +12,11 @@
 export default {
   data () {
     return {
+      height: '600px',
       imgInfo:[{
-        src: "/static/img/carousel1.jpg"
+        src: "/static/img/carousel2.jpg"
       }, {
-        src: "/static/img/carousel2.jpg" 
+        src: "/static/img/carousel1.jpg" 
       }, {
         src: "/static/img/carousel3.jpg"
       }, {
@@ -47,7 +48,11 @@ export default {
   .el-carousel__item:nth-child(2n+1) {
     background-color: #d3dce6;
   }
-  .carousel-img{
+  .carousel-img {
     width: 100%;
+  }
+  img {
+    height: 100%;
+    width: 100%
   }
 </style>
