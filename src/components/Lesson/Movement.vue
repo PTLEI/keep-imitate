@@ -1,6 +1,5 @@
 <template>
     <div id="my-move">
-        <router-view/>
         <div class="title">
             <h2>动作库</h2>
             <p>动作的规范不但可以更高效的达到训练目的更能减少运动损伤</p>
@@ -15,76 +14,76 @@
                 </router-link>
             </li>
             <li>
-                <a href="#" >
+                <router-link :to="{ name: 'moveshow'}">
                     <div class="img">
                         <img src="static/img/55963ab1a4c00000.png" >
                     </div>
                     <div class="name">背部</div>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="#" >
+                <router-link :to="{ name: 'moveshow'}">
                     <div class="img">
                         <img src="static/img/55963b1db3c00000.png" >
                     </div>
                     <div class="name">肩部</div>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="#" >
+                <router-link :to="{ name: 'moveshow'}">
                     <div class="img">
                         <img src="static/img/559639a46e400000.png" >
                     </div>
                     <div class="name">手臂</div>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="#" >
+                <router-link :to="{ name: 'moveshow'}">
                     <div class="img">
                         <img src="static/img/55963afccdc00000.png" >
                     </div>
                     <div class="name">颈部</div>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="#" >
+                <router-link :to="{ name: 'moveshow'}">
                     <div class="img">
                         <img src="static/img/55963b3fc0400000.png" >
                     </div>
                     <div class="name">腹部</div>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="#" >
+                <router-link :to="{ name: 'moveshow'}">
                     <div class="img">
                         <img src="static/img/55963b2cc0800000.png" >
                     </div>
                     <div class="name">腰部</div>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="#" >
+                <router-link :to="{ name: 'moveshow'}">
                     <div class="img">
                         <img src="static/img/559639594f800000.png" >
                     </div>
                     <div class="name">臀部</div>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="#" >
+                <router-link :to="{ name: 'moveshow'}">
                     <div class="img">
                         <img src="static/img/55963ad31b400000.png" >
                     </div>
                     <div class="name">腿部</div>
-                </a>
+                </router-link>
             </li>
             <li>
-                <a href="#" >
+                <router-link :to="{ name: 'moveshow'}">
                     <div class="img">
                         <img src="static/img/559638c467800000.png" >
                     </div>
                     <div class="name">全身</div>
-                </a>
+                </router-link>
             </li>
         </ul>
     </div>
