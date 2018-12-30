@@ -8,6 +8,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import VueLazyload from 'vue-lazyload'
 
+import api from '../static/api/api'
+Vue.prototype.$api = api
+
+import { Notification } from 'element-ui';
+Vue.prototype.$notify = Notification;
+
 Vue.config.productionTip = false
 
 // element-ui导入使用

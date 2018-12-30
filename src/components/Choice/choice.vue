@@ -28,7 +28,7 @@
                 <div class="title">精选合集</div>
                 <ul class="entries clearfix">
                     <li v-for="(choiceInfo,index) in choice3" :key="index">
-                        <a href="#" class="imgshow">
+                        <a href="#" class="imgshow" @click="clickTest">
                             <img  v-lazy="choiceInfo.src">
                             <span>{{choiceInfo.content}}</span>
                         </a>
@@ -41,6 +41,8 @@
 
 <script>
 import carousel from '@/components/Carousel'
+import Vue from 'Vue'
+import Bus from '../Bus'
 export default {
     name:'choice',
     components:{
@@ -75,6 +77,15 @@ export default {
                 src: "/static/img/carousel4.jpg",
                 content: "这是最下边的一组了"
             }]
+        }
+    },
+    mounted() {
+        // this.$api.test();
+        // this.$api.getChoiceList();
+    },
+    methods: {
+        clickTest() {
+            this.$api.test();
         }
     }
 }
