@@ -26,7 +26,7 @@ let login = function (username, password) {
         }
     })
         .then(function (res) {
-            console.log(res.data);
+            // console.log(res.data);
             if(res.data.status!==200){
                 console.log('登陆失败')
                 Vue.prototype.$notify({

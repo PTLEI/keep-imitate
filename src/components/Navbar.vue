@@ -14,7 +14,7 @@
         </el-submenu>
         <el-menu-item class="login" index="" v-show="!islogin" @click="loginDialogShow">登陆/注册</el-menu-item>
         <el-menu-item class="login" index="" v-show="islogin" style="z-index:9999999">
-            <img src="/static/img/apple.jpeg" style="height: 60px; width: 60px; border-radius:50%"/>
+            <img :src="picUrl" style="height: 60px; width: 60px; border-radius:50%"/>
             <!-- <el-button type="text">{{nickname}}</el-button> -->
             <a href="#" type="text" id="nickname">{{nickname}}
                 <div class="list">
@@ -75,7 +75,13 @@ export default {
         login(username, password) {
             if(this.loginData.username && this.loginData.password) {
                 this.$api.login(username, password);
-                this.islogin = true;
+                Bus.$on('userInfo', res => {
+                    console.log(res);
+                    this.picUrl = res.headpic;
+                    console.log(res.headpic);
+                    console.log(this.picUrl);
+                    this.islogin = true;
+                })
                 this.visible = false;
             } else {
                 this.$options.methods.Notice.bind(this)({
@@ -85,7 +91,6 @@ export default {
                 });
                 return false;
             }
-            // console.log(username, password);
         },
         userExit() {
             this.$options.methods.Notice.bind(this)({
@@ -134,7 +139,7 @@ export default {
                     self.isLogin=true;
                 }
             })
-            console.log(`传来的数据是：${e}`)
+            // console.log(`传来的数据是：${e}`)
         })
     }
 }
