@@ -6,21 +6,21 @@
           <h4>训练计划针对不同人群、各种器械和阶段健身目标组合编排，适用最广泛的健身场景。</h4>
           <div class="training-wrap" style="background-image: url(static/img/background-img/storebg.jpg);">
               <div class="training-block">
-                  <a href="#" class="training-item">
+                  <a href="#/LesShow" class="training-item">
                       <div class="training-detail" style="background-image: url(static/img/index_img1.jpg)">
                           <div class="training-title">瘦腿训练</div>
                           <div style="text-align: left">13分钟 49千卡</div>
                           <div class="training-population">48，385，041人训练</div>
                       </div>
                   </a>
-                  <a href="#" class="training-item">
+                  <a href="#/LesShow" class="training-item">
                       <div class="training-detail" style="background-image: url(static/img/index_img2.jpg)">
                           <div class="training-title">马甲线养成</div>
                           <div style="text-align: left">12分钟 61千卡</div>
                           <div class="training-population">49，252，615人训练</div>
                       </div>
                   </a>
-                  <a href="#" class="training-item">
+                  <a href="#/LesShow" class="training-item">
                       <div class="training-detail" style="background-image: url(static/img/index_img3.jpg)">
                           <div class="training-title">瑜伽·身体韵律</div>
                           <div style="text-align: left">32分钟 135千卡</div>
@@ -59,7 +59,7 @@
                 <a href="#" class="community-entry"></a>
             </div>
         </section>
-        <section class="shop-index">
+        <!-- <section class="shop-index">
             <h3>品牌装备 & 商城，伴你尽兴挥汗</h3>
             <h4>Keep 品牌服饰、器械及智能装备，打破 App 边界成为你触手可及的运动伙伴。</h4>
             <div class="shop-wrap" style="background-image: url(static/img/background-img/storebg.jpg);">
@@ -69,7 +69,7 @@
                     <div class="shop-btn"></div>
                 </div>
             </div>
-        </section>
+        </section> -->
     </div>
 </template>
 

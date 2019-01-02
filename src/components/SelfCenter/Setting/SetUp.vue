@@ -13,10 +13,10 @@
                             <label class="l">昵称</label>
                             <div class="l">{{nickname}}</div>
                         </div>
-                        <div class="info-box">
+                        <!-- <div class="info-box">
                             <label class="l">城市</label>
                             <div class="l">未设置</div>
-                        </div>
+                        </div> -->
                         <div class="info-box">
                             <label class="l">性别</label>
                             <div class="l">保密</div>

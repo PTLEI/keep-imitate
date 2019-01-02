@@ -17,7 +17,7 @@
                                 <p><span class="font1">邮箱</span> 
                                     <span class="font4">未绑定（绑定邮箱可得一积分</span>
                                 </p>
-                                <p class="font2">可用邮箱加密码登录慕课网，可用邮箱找回密码</p>
+                                <p class="font2">可用邮箱加密码登录keep，可用邮箱找回密码</p>
                             </div>
                             <div class="info-right">
                                 <a href="#">
@@ -34,7 +34,7 @@
                                     <p><span class="font1">手机</span> 
                                         <span class="font4" id="123********45">123********45</span>
                                     </p>
-                                    <p class="font2">可用手机号加密码登录慕课网，可通过手机号找回密码</p>
+                                    <p class="font2">可用手机号加密码登录keep，可通过手机号找回密码</p>
                                 </div>
                                 <div class="info-right">
                                     <a href="#">
@@ -258,7 +258,7 @@
     font-size: 14px;
 }
 .info-center .font4{
-    color: #f01414;
+    color: #409EEF;
     font-size: 14px;
 }
 .info-right{
@@ -292,7 +292,7 @@
     font-weight: 700;
 }
 .innerbox .right-text .red{
-    color: #f01414;
+    color: #E6A23C;
 }
 .innerbox .right-text .btn-default{
     padding: 0;

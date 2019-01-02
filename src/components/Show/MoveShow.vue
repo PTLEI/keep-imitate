@@ -66,6 +66,9 @@ export default {
     width: 16px;
     border-bottom: 5px solid #24c789;
 }
+.content {
+    text-align: left;
+}
 .content ul{
     padding: 0;
     list-style-position: inside;

@@ -19,7 +19,7 @@
             <a href="#" type="text" id="nickname">{{nickname}}
                 <div class="list">
                     <ul>
-                        <li><router-link to="/Setting">个人中心</router-link></li>
+                        <li><router-link to="/Setting/setting">个人中心</router-link></li>
                         <li><a @click="userExit">登出</a></li>
                     </ul>
                 </div>
@@ -32,7 +32,7 @@
                       <el-input v-model="loginData.username" placeholder="请输入用户账号"></el-input>
                   </el-form-item>
                   <el-form-item label="密码：">
-                      <el-input v-model="loginData.password" type="password" placeholder="请输入用户密码"></el-input>
+                      <el-input v-model="loginData.password" type="password" placeholder="请输入用户密码" @keyup.13.native="login(loginData.username, loginData.password)"></el-input>
                   </el-form-item>
                 </el-form>
             </div>

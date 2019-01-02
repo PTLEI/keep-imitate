@@ -17,8 +17,48 @@
                 <p>1x20</p>
             </div>
             <div class="step">
+                <img src="https://static1.gotokeep.com/picture/frame/1501059075357.jpg">
+                <p>侧卧左侧前抬腿</p>
+                <p>1x20</p>
+            </div>
+            <div class="step">
+                <img src="https://static1.gotokeep.com/picture/frame/1501058670080.jpg">
+                <p>侧卧左侧抬腿</p>
+                <p>1x20</p>
+            </div>
+            <div class="step">
+                <img src="https://static1.gotokeep.com/picture/frame/1502977942898.jpg">
+                <p>侧卧左侧后踢腿</p>
+                <p>1x20</p>
+            </div>
+            <div class="step">
                 <img src="https://static1.gotokeep.com/picture/frame/1501126047137.jpg">
                 <p>侧卧左侧提膝</p>
+                <p>1x20</p>
+            </div>
+            <div class="step">
+                <img src="https://static1.gotokeep.com/picture/frame/1501059075357.jpg">
+                <p>侧卧左侧前抬腿</p>
+                <p>1x20</p>
+            </div>
+            <div class="step">
+                <img src="https://static1.gotokeep.com/picture/frame/1501126047137.jpg">
+                <p>侧卧左侧提膝</p>
+                <p>1x20</p>
+            </div>
+            <div class="step">
+                <img src="https://static1.gotokeep.com/picture/frame/1501059075357.jpg">
+                <p>侧卧左侧前抬腿</p>
+                <p>1x20</p>
+            </div>
+            <div class="step">
+                <img src="https://static1.gotokeep.com/picture/frame/1501126047137.jpg">
+                <p>侧卧左侧提膝</p>
+                <p>1x20</p>
+            </div>
+            <div class="step">
+                <img src="https://static1.gotokeep.com/picture/frame/1501059075357.jpg">
+                <p>侧卧左侧前抬腿</p>
                 <p>1x20</p>
             </div>
         </el-main>
@@ -39,7 +79,7 @@ export default {
 <style scoped>
     .el-container {
         width: 70%;
-        height: 1000px;
+        height: 100%;
         margin: 10px auto;
     }
     .el-header {
