@@ -30,7 +30,7 @@
                     <li v-for="(choiceInfo,index) in choice3" :key="index">
                         <a href="#" class="imgshow" @click="clickTest">
                             <img  v-lazy="choiceInfo.src">
-                            <span>{{choiceInfo.content}}</span>
+                            <span class="content-span">{{choiceInfo.content}}</span>
                         </a>
                     </li>
                 </ul>
@@ -52,12 +52,6 @@ export default {
         return {
             choice:[{
                 src: "/static/img/carousel2.jpg",
-                content: "内容展示1！！！！！"
-            }, {
-                src: "/static/img/carousel2.jpg",
-                content: "内容展示2！！！！！"
-            }, {
-                src: "/static/img/carousel2.jpg",
                 content: "内容展示3！！！！！"
             }, {
                 src: "/static/img/carousel2.jpg",
@@ -72,7 +66,7 @@ export default {
             }],
             choice3:[{
                 src: "/static/img/carousel3.jpg",
-                content: "这是最下边的一组了"
+                content: "这是最下边的一组了!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
             }, {
                 src: "/static/img/carousel4.jpg",
                 content: "这是最下边的一组了"
@@ -156,6 +150,11 @@ a{
     text-decoration: none;
     font-size: 16px;
     color: #584f60;
+}
+.content-span {
+    height: 20px;
+    width: 336px;
+    overflow: hidden;
 }
 
 </style>

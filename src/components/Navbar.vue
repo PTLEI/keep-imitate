@@ -19,7 +19,7 @@
             <a href="#" type="text" id="nickname">{{nickname}}
                 <div class="list">
                     <ul>
-                        <li><a href="#">个人中心</a></li>
+                        <li><router-link to="/Setting">个人中心</router-link></li>
                         <li><a @click="userExit">登出</a></li>
                     </ul>
                 </div>

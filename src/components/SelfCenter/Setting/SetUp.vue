@@ -35,8 +35,7 @@
     export default {
         data(){
             return {
-                nickname:JSON.parse(sessionStorage.getItem('yzInfo')).nickname,
-                identity:JSON.parse(sessionStorage.getItem('yzInfo')).identity,
+                nickname:JSON.parse(sessionStorage.getItem('userInfo')).nickname,
             }
         }
     }

@@ -29,7 +29,7 @@ export default {
 
 <style>
   .el-carousel{
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
   }
   .el-carousel__item h3 {

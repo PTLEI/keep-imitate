@@ -1,28 +1,28 @@
 <template>
     <div id="settingNavbar">
         <div class="main">
-        <div class="setting">
-                    <div class="setting-left l">
-                        <div class="user-cont">
-                            <div class="user-mode">
-                                <a href="#" class="user-setupimg"><img :src="headlogo"></a>
-                            </div>
+            <div class="setting">
+                <div class="setting-left l">
+                    <div class="user-cont">
+                        <div class="user-mode">
+                            <a href="#" class="user-setupimg"><img :src="headlogo"></a>
                         </div>
-                        <div class="des-mode">
-                            <p>{{nickname}}</p>
-                        </div>
-                        <div class="left-list">
-                            <h2>账户管理</h2>
+                    </div>
+                    <div class="des-mode">
+                        <p>{{nickname}}</p>
+                    </div>
+                    <div class="left-list">
+                        <h2>账户管理</h2>
                         <div class="line"></div>
                         <ul class="menu">
                             <li v-for="(item,index) in settingNav" :key="index">
                                 <router-link :to="item.href">{{item.text}}</router-link>
                             </li>
                         </ul>
-                        </div>
                     </div>
                 </div>
-                <transition name="fade"><router-view/></transition>
+            </div>
+            <transition name="fade"><router-view/></transition>
         </div>
     </div>
 </template>
@@ -166,17 +166,14 @@ export default {
     name:'settingNavbar',
     data(){
         return {
-            nickname:JSON.parse(sessionStorage.getItem('yzInfo')).nickname,
-            headlogo:JSON.parse(sessionStorage.getItem('yzInfo')).headlogo,
+            nickname:JSON.parse(sessionStorage.getItem('userInfo')).nickname,
+            headlogo:JSON.parse(sessionStorage.getItem('userInfo')).headpic,
             settingNav:[{
                 href:'./setting',
                 text:'个人信息'
             },{
                 href:'./binding',
                 text:'账号绑定'
-            },{
-                href:'./identity',
-                text:'学籍认证'
             }]
         }
     }
