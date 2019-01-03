@@ -15,7 +15,6 @@
         <el-menu-item class="login" index="" v-show="!islogin" @click="loginDialogShow">登陆/注册</el-menu-item>
         <el-menu-item class="login" index="" v-show="islogin" style="z-index:9999999">
             <img :src="picUrl" style="height: 60px; width: 60px; border-radius:50%"/>
-            <!-- <el-button type="text">{{nickname}}</el-button> -->
             <a href="#" type="text" id="nickname">{{nickname}}
                 <div class="list">
                     <ul>
@@ -164,6 +163,9 @@ a:hover{
 .el-input{
     display: inline-block;
     width: 300px;
+}
+.el-dialog__wrapper .el-dialog{
+    border-radius: 10px;
 }
 #nickname .list{
     opacity:0;

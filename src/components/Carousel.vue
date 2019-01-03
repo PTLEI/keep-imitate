@@ -10,17 +10,31 @@
 
 <script>
 export default {
+  props: ['page'],
   data () {
     return {
       height: '600px',
       imgInfo:[{
-        src: "/static/img/carousel2.jpg"
+        src: "/static/img/carousel1.jpg"
       }, {
-        src: "/static/img/carousel1.jpg" 
+        src: "/static/img/carousel2.jpg" 
       }, {
         src: "/static/img/carousel3.jpg"
       }, {
         src: "/static/img/carousel4.jpg"
+      }]
+    }
+  },
+  created() {
+    if(this.page === 2) {
+      this.imgInfo = [{
+        src: "/static/img/carousel11.jpg"
+      }, {
+        src: "/static/img/carousel12.jpg" 
+      }, {
+        src: "/static/img/carousel13.jpg"
+      }, {
+        src: "/static/img/carousel14.jpg"
       }]
     }
   }
@@ -29,7 +43,7 @@ export default {
 
 <style>
   .el-carousel{
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
   }
   .el-carousel__item h3 {

@@ -1,6 +1,6 @@
 <template>
     <div class="choice-content">
-        <carousel class="choice-carousel"></carousel>
+        <carousel class="choice-carousel" :page="2"></carousel>
         <div class="page">
             <section class="wrapper">
                 <div class="title">热门动态</div>
@@ -54,21 +54,21 @@ export default {
                 src: "/static/img/carousel2.jpg",
                 content: "内容展示3！！！！！"
             }, {
-                src: "/static/img/carousel2.jpg",
+                src: "/static/img/carousel4.jpg",
                 content: "内容展示4！！！！！"
             }],
             choice2:[{
                 src: "/static/img/carousel1.jpg",
                 content: "内容展示1?????????"
             }, {
-                src: "/static/img/carousel1.jpg",
+                src: "/static/img/carousel3.jpg",
                 content: "内容展示2??????????"
             }],
             choice3:[{
                 src: "/static/img/carousel3.jpg",
                 content: "这是最下边的一组了!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
             }, {
-                src: "/static/img/carousel4.jpg",
+                src: "/static/img/carousel2.jpg",
                 content: "这是最下边的一组了"
             }]
         }
