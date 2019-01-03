@@ -12,54 +12,69 @@
         <el-main >
             <div>计划训练  第一节</div>
             <div class="step">
-                <img src="https://static1.gotokeep.com/picture/frame/1501126047137.jpg">
+                <img src="/static/img/LesShow/show1.jpg">
                 <p>侧卧左侧提膝</p>
                 <p>1x20</p>
             </div>
             <div class="step">
-                <img src="https://static1.gotokeep.com/picture/frame/1501059075357.jpg">
+                <img src="/static/img/LesShow/show2.jpg">
                 <p>侧卧左侧前抬腿</p>
                 <p>1x20</p>
             </div>
             <div class="step">
-                <img src="https://static1.gotokeep.com/picture/frame/1501058670080.jpg">
+                <img src="/static/img/LesShow/show3.jpg">
                 <p>侧卧左侧抬腿</p>
                 <p>1x20</p>
             </div>
             <div class="step">
-                <img src="https://static1.gotokeep.com/picture/frame/1502977942898.jpg">
+                <img src="/static/img/LesShow/show4.jpg">
                 <p>侧卧左侧后踢腿</p>
                 <p>1x20</p>
             </div>
             <div class="step">
-                <img src="https://static1.gotokeep.com/picture/frame/1501126047137.jpg">
-                <p>侧卧左侧提膝</p>
+                <img src="/static/img/LesShow/show5.jpg">
+                <p>左腿翘曲两头起</p>
+                <p>1x10</p>
+            </div>
+            <div class="step">
+                <img src="/static/img/LesShow/show6.jpg">
+                <p>右腿翘曲两头起</p>
+                <p>1x10</p>
+            </div>
+            <div class="step">
+                <img src="/static/img/LesShow/show7.jpg">
+                <p>单腿屈腿两头起</p>
+                <p>1x12</p>
+            </div>
+            <div class="step">
+                <img src="/static/img/LesShow/show8.jpg">
+                <p>侧卧右侧提膝</p>
                 <p>1x20</p>
             </div>
             <div class="step">
-                <img src="https://static1.gotokeep.com/picture/frame/1501059075357.jpg">
-                <p>侧卧左侧前抬腿</p>
+                <img src="/static/img/LesShow/show9.jpg">
+                <p>侧卧右侧前抬腿</p>
                 <p>1x20</p>
             </div>
             <div class="step">
-                <img src="https://static1.gotokeep.com/picture/frame/1501126047137.jpg">
-                <p>侧卧左侧提膝</p>
+                <img src="/static/img/LesShow/show3.jpg">
+                <p>侧卧右侧抬腿</p>
                 <p>1x20</p>
             </div>
             <div class="step">
-                <img src="https://static1.gotokeep.com/picture/frame/1501059075357.jpg">
-                <p>侧卧左侧前抬腿</p>
+                <img src="/static/img/LesShow/show8.jpg">
+                <p>侧卧右侧后踢腿</p>
                 <p>1x20</p>
             </div>
             <div class="step">
-                <img src="https://static1.gotokeep.com/picture/frame/1501126047137.jpg">
-                <p>侧卧左侧提膝</p>
-                <p>1x20</p>
+                <img src="/static/img/LesShow/show10.jpg">
+                <p>坐姿俯身右侧臀部拉伸</p>
+                <p>1x15</p>
             </div>
             <div class="step">
-                <img src="https://static1.gotokeep.com/picture/frame/1501059075357.jpg">
-                <p>侧卧左侧前抬腿</p>
-                <p>1x20</p>
+                <img src="/static/img/LesShow/show10.jpg">
+                <p>坐姿俯身左侧臀部拉伸</p>
+                <p>1x15</p>
             </div>
         </el-main>
     </el-container>
