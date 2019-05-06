@@ -1,11 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+// 首页
 import IndexPage from '@/components/Index-one'
+
+// 精选
 import Choice from '@/components/Choice/choice'
+
+// 训练
 import Training from '@/components/Lesson/Training'
-import Movement from '@/components/Lesson/Movement'
-import MoveShow from '@/components/Show/MoveShow'
+import TrainingList from '@/components/Lesson/TrainingList';
 import LesShow from '@/components/Show/LesShow'
+
+// 动作库
+import Movement from '@/components/Lesson/Movement'
+import MovementList from '@/components/Lesson/MovementList';
+import MoveShow from '@/components/Show/MoveShow'
 
 import SettingNavbar from '@/components/SelfCenter/Setting/SettingNavbar'
 import Setup from '@/components/SelfCenter/Setting/Setup'
@@ -35,10 +45,24 @@ export default new Router({
       name: 'training',
       component: Training
     },
+
+    // 动作库列表及详情
+    {
+      path: '/MovementList',
+      name: 'movementlist',
+      component: MovementList
+    },
     {
       path: '/MoveShow',
       name: 'moveshow',
       component: MoveShow
+    },
+
+    // 训练课程列表及详情
+    {
+      path: '/TrainingList',
+      name: 'traininglist',
+      component: TrainingList
     },
     {
       path: '/LesShow',

@@ -7,28 +7,29 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar'
-import myFooter from './components/Footer'
+import Navbar from "./components/Navbar";
+import myFooter from "./components/Footer";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Navbar,myFooter
+    Navbar,
+    myFooter
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
-body{
+body {
   margin: 0;
+  background-color: #fafafa;
 }
-a{
+a {
   text-decoration: none;
 }
 </style>
