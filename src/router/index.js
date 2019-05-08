@@ -5,7 +5,9 @@ import Router from 'vue-router'
 import IndexPage from '@/components/Index-one'
 
 // 精选
-import Choice from '@/components/Choice/choice'
+import Information from '@/components/Information/Information'
+import InformationList from '@/components/Information/InformationList'
+import InformationDetail from '@/components/Information/InformationDetail'
 
 // 训练
 import Training from '@/components/Lesson/Training'
@@ -30,11 +32,24 @@ export default new Router({
       name: 'IndexPage',
       component: IndexPage
     },
+
+    // 精选模块
     {
-      path: '/Choice',
-      name: 'Choice',
-      component: Choice
+      path: '/Information',
+      name: 'Information',
+      component: Information
     },
+    {
+      path: '/InformationList',
+      name: 'InformationList',
+      component: InformationList
+    },
+    {
+      path: '/InformationDetail',
+      name: 'InformationDetail',
+      component: InformationDetail
+    },
+
     {
       path: '/Movement',
       name: 'movement',

@@ -1,9 +1,7 @@
 <template>
   <el-carousel :height="calHeight" :interval="5000" arrow="always">
     <el-carousel-item v-for="(item,index) in imgInfo" :key="index">
-      <div class="carousel-img">
-        <img v-lazy="item.src">
-      </div>
+      <div class="carousel-img" :style="{'background-image': 'url(' + item.src + ')'}"></div>
     </el-carousel-item>
   </el-carousel>
 </template>
@@ -53,7 +51,7 @@ export default {
 
 <style>
 .el-carousel {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 .el-carousel__item h3 {
@@ -73,10 +71,10 @@ export default {
   background-color: #d3dce6;
 }
 .carousel-img {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   width: 100%;
-}
-img {
   height: 100%;
-  width: 100%;
 }
 </style>

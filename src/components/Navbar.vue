@@ -7,7 +7,7 @@
     @select="handleSelect"
   >
     <el-menu-item index="/">首页</el-menu-item>
-    <el-menu-item index="/Choice">发现精选</el-menu-item>
+    <el-menu-item index="/Information">发现精选</el-menu-item>
     <el-submenu index="Lesson">
       <template slot="title">训练课程</template>
       <el-menu-item index="/Training">课程分类</el-menu-item>
@@ -93,8 +93,8 @@ export default {
         Bus.$on("userInfo", res => {
           console.log(res);
           this.picUrl = res.headpic;
-          console.log(res.headpic);
-          console.log(this.picUrl);
+          console.log(JSON.parse(res));
+          console.log(res.userid);
           this.islogin = true;
         });
         this.visible = false;

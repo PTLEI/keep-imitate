@@ -127,7 +127,6 @@ h4 {
   display: block;
   height: 33%;
   width: 300px;
-  /* background-image: url('../../static/img/index_img1.jpg'); */
 }
 .training-title {
   font-size: 20px;
