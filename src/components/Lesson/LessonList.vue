@@ -2,15 +2,15 @@
   <div id="training-list-content">
     <ul class="training-list">
       <li v-for="(item, index) in trainingList" :key="index" class="single-list">
-        <el-button type="text" class="single-list-button" @click="clickTraining">
-          <div class="background-img" :style="{backgroundImage:'url(' + item.backgroundImg + ')'}">
+        <el-button type="text" class="single-list-button" @click="clickLesson(item.lessonId)">
+          <div class="background-img" :style="{backgroundImage:'url(' + item.picUrl + ')'}">
             <div class="single-title">
               <span class="single-title-text">{{item.title}}</span>
+              <span class="single-info-count">{{item.count}}节</span>
             </div>
           </div>
           <div class="single-info">
-            <span class="single-info-count">{{item.count}}</span>
-            <span class="single-info-level">{{item.count}}</span>
+            <span class="single-info-level">level: {{item.level}}</span>
           </div>
         </el-button>
       </li>
@@ -22,34 +22,23 @@
 export default {
   data() {
     return {
-      trainingList: [
-        {
-          title: "柔韧性提升",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1517217173158_315x315.jpg"
-        },
-        {
-          title: "热身放松",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1519454845709_750x700.jpg"
-        },
-        {
-          title: "伤痛预防",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1519455021015_750x700.jpg"
-        },
-        {
-          title: "心肺激活",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1519888737768_315x315.png"
-        }
-      ]
+      trainingList: []
     };
   },
   methods: {
-    clickTraining() {
-      this.$router.push({ path: "LesShow" });
+    clickLesson(id) {
+      this.$router.push({ path: `/LesShow/${id}` });
     }
+  },
+  mounted() {
+    this.$api
+      .getLessonList(this.$route.params.trainId)
+      .then(res => {
+        this.trainingList = res.data.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
@@ -60,13 +49,25 @@ export default {
 }
 .training-list {
   margin: 0 auto;
+  padding: 0;
   width: 900px;
 }
 .single-list {
   list-style: none;
   display: inline-block;
-  width: 50%;
+  width: 426px;
   background-color: white;
+  margin: 0 6px 12px 10px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+  transition: all 300ms ease;
+}
+.single-list:nth-child(2n) {
+  margin: 0 10px 12px 6px;
+}
+.single-list:hover {
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
+  transform: translate3d(0, -3px, 0);
 }
 .single-list-button {
   width: 100%;
@@ -84,10 +85,11 @@ export default {
 }
 .single-title {
   position: absolute;
-  height: 20%;
+  height: 40%;
   width: 100%;
   left: 0;
   bottom: 0;
+  color: white;
   background-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.4) 0%,
@@ -99,10 +101,14 @@ export default {
 .single-title-text {
   position: absolute;
   left: 20px;
-  top: 12px;
+  top: 20px;
   font-size: 20px;
-  color: white;
   font-weight: bold;
+}
+.single-info-count {
+  position: absolute;
+  left: 20px;
+  top: 50px;
 }
 .single-info {
   position: relative;
@@ -110,14 +116,11 @@ export default {
   height: 20%;
   color: #584f60;
 }
-.single-info-count {
-  position: absolute;
-  left: 20px;
-  top: 10px;
-}
 .single-info-level {
   position: absolute;
   left: 20px;
-  top: 32px;
+  top: 20px;
+  font-size: 15px;
+  font-weight: bold;
 }
 </style>

@@ -9,14 +9,15 @@
       </div>
       <div class="shadow"></div>
     </div>
+    <button @click="test(100001)" class="test">test</button>
     <div class="main-content">
       <div class="main-content-title">
         <p>计划训练 第一节</p>
       </div>
       <div class="step clearfix" v-for="(item, index) in lessonDetail">
         <a href="#/MoveShow" target="_blank">
-          <div class="step-background" :style="{'background-image': 'url(' + item.image + ')'}"></div>
-          <p class="step-name">{{item.moveName}}</p>
+          <div class="step-background" :style="{'background-image': 'url(' + item.picUrl + ')'}"></div>
+          <p class="step-name">{{item.name}}</p>
           <p class="step-payload">{{item.payload}}</p>
         </a>
       </div>
@@ -31,47 +32,67 @@ export default {
       headerImgUrl: "static/img/index_img1.jpg",
       lessonDetail: [
         {
-          image: "/static/img/LesShow/show1.jpg",
-          moveName: "侧卧左侧提膝",
+          picUrl: "/static/img/Movement/List/show1.jpg",
+          name: "侧卧左侧提膝",
           payload: "1x20"
         },
         {
-          image: "/static/img/LesShow/show2.jpg",
-          moveName: "侧卧左侧前抬腿",
+          picUrl: "/static/img/Movement/List/show2.jpg",
+          name: "侧卧左侧前抬腿",
           payload: "1x20"
         },
         {
-          image: "/static/img/LesShow/show3.jpg",
-          moveName: "侧卧左侧抬腿",
+          picUrl: "/static/img/Movement/List/show3.jpg",
+          name: "侧卧左侧抬腿",
           payload: "1x20"
         },
         {
-          image: "/static/img/LesShow/show4.jpg",
-          moveName: "侧卧左侧后踢腿",
+          picUrl: "/static/img/Movement/List/show4.jpg",
+          name: "侧卧左侧后踢腿",
           payload: "1x20"
         },
         {
-          image: "/static/img/LesShow/show5.jpg",
-          moveName: "左腿翘曲两头起",
+          picUrl: "/static/img/Movement/List/show5.jpg",
+          name: "左腿翘曲两头起",
           payload: "1x20"
         },
         {
-          image: "/static/img/LesShow/show6.jpg",
-          moveName: "右腿翘曲两头起",
+          picUrl: "/static/img/Movement/List/show6.jpg",
+          name: "右腿翘曲两头起",
           payload: "1x20"
         },
         {
-          image: "/static/img/LesShow/show7.jpg",
-          moveName: "坐姿俯身左侧臀部拉伸",
+          picUrl: "/static/img/Movement/List/show7.jpg",
+          name: "坐姿俯身左侧臀部拉伸",
           payload: "1x20"
         }
       ]
     };
+  },
+  methods: {
+    test(id) {
+      this.$api
+        .getLessonDetail(id)
+        .then(res => {
+          console.log(res.data);
+          console.log(res.data.data);
+        })
+        .catch(err => {});
+    }
   }
 };
 </script>
 
 <style scoped>
+.test {
+  font-size: 30px;
+  border-color: transparent;
+  color: #409eff;
+  background-color: transparent;
+}
+.test:hover {
+  cursor: pointer;
+}
 .lesShow-container {
   width: 900px;
   height: 100%;

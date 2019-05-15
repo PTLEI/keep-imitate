@@ -32,4 +32,11 @@ body {
 a {
   text-decoration: none;
 }
+/* clearfix */
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
 </style>

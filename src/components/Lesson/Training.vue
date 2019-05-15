@@ -6,24 +6,25 @@
         <p>丰富的训练课程，规范你的训练过程</p>
       </div>
       <ul class="class-list clearfix">
-        <el-button type="text" class="main-content" @click="clickTrain">
+        <el-button type="text" class="main-content">
           <li
             class="trainlist"
             v-for="(item, index) in trainingInfo"
             :key="index"
-            :style="{backgroundImage:'url(' + item.backgroundImg + ')'}"
+            :style="{backgroundImage:'url(' + item.picUrl + ')'}"
+            @click="clickTrain(item.trainId)"
           >
             <div class="mark"></div>
             <div class="Info">
               <h3>{{item.title}}</h3>
-              <p>{{item.count}}</p>
+              <p>{{item.count}}个课程</p>
             </div>
           </li>
         </el-button>
       </ul>
       <div class="check-all">
         <p>没有想要的分类</p>
-        <a href>全部课程</a>
+        <el-button @click="checkAllTrain">全部课程</el-button>
       </div>
     </div>
   </div>
@@ -32,53 +33,32 @@
 export default {
   data() {
     return {
-      trainingInfo: [
-        {
-          title: "柔韧性提升",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1517217173158_315x315.jpg"
-        },
-        {
-          title: "热身放松",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1519454845709_750x700.jpg"
-        },
-        {
-          title: "伤痛预防",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1519455021015_750x700.jpg"
-        },
-        {
-          title: "心肺激活",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1519888737768_315x315.png"
-        },
-        {
-          title: "力量激活",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1520240773072_315x315.jpg"
-        },
-        {
-          title: "燃脂训练",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1519888737768_315x315.png"
-        },
-        {
-          title: "形体改善",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1499681112983_375x375.jpg"
-        },
-        {
-          title: "形体矫正",
-          count: "1个课程",
-          backgroundImg: "/static/img/TrainingIndex/1510299776373_315x315.jpg"
-        }
-      ]
+      trainingInfo: []
     };
   },
+  mounted() {
+    this.$api
+      .getTrainList()
+      .then(res => {
+        this.trainingInfo = res.data.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
   methods: {
-    clickTrain() {
-      this.$router.push({ path: "/TrainingList" });
+    clickTrain(id) {
+      this.$router.push({ path: `/LessonList/${id}` });
+    },
+    checkAllTrain() {
+      this.$api
+        .getTrainList()
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };
@@ -128,12 +108,34 @@ div {
   float: left;
 }
 .trainlist {
+  position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
+.mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
 .Info {
-  padding-top: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: auto 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Info p {
+  color: #999;
 }
 
 /* 查看全部课程Button */
@@ -147,27 +149,13 @@ div {
   font-size: 12px;
   margin-bottom: 12px;
 }
-.check-all a {
+.check-all .el-button {
   display: inline-block;
   width: 150px;
-  height: 33px;
-  line-height: 33px;
   border: 1px solid #24c789;
   font-size: 12px;
   color: #24c789;
   border-radius: 33px 33px;
   text-decoration: none;
-}
-.mark {
-  background-color: rgba(0, 0, 0, 0.1);
-  z-index: 2;
-}
-
-/* clearfix */
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
-  visibility: hidden;
 }
 </style>

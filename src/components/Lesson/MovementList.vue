@@ -8,9 +8,12 @@
     </div>
     <div class="list-content">
       <div class="list-single clearfix" v-for="(item, index) in moveList" :key="index">
-        <a href="#/MoveShow" target="_blank">
-          <div class="movement-background" :style="{'background-image': 'url(' + item.image + ')'}"></div>
-          <p class="movement-name">{{item.moveName}}</p>
+        <a :href="'#/MoveShow/' + item.movementId" target="_blank">
+          <div
+            class="movement-background"
+            :style="{'background-image': 'url(' + item.picUrl + ')'}"
+          ></div>
+          <p class="movement-name">{{item.name}}</p>
           <p class="movement-level">{{item.payload}}</p>
         </a>
       </div>
@@ -22,36 +25,86 @@
 export default {
   data() {
     return {
-      moveTitle: "胸部",
-      moveAmount: 47,
       moveList: [
         {
-          image: "/static/img/LesShow/show1.jpg",
-          moveName: "侧卧左侧提膝",
+          picUrl: "/static/img/Movement/List/show1.jpg",
+          name: "侧卧左侧提膝",
           payload: "1x20"
         },
         {
-          image: "/static/img/LesShow/show2.jpg",
-          moveName: "侧卧左侧前抬腿",
+          picUrl: "/static/img/Movement/List/show2.jpg",
+          name: "侧卧左侧前抬腿",
           payload: "1x20"
         },
         {
-          image: "/static/img/LesShow/show3.jpg",
-          moveName: "侧卧左侧抬腿",
+          picUrl: "/static/img/Movement/List/show3.jpg",
+          name: "侧卧左侧抬腿",
           payload: "1x20"
         },
         {
-          image: "/static/img/LesShow/show4.jpg",
-          moveName: "侧卧左侧后踢腿",
+          picUrl: "/static/img/Movement/List/show4.jpg",
+          name: "侧卧左侧后踢腿",
           payload: "1x20"
         },
         {
-          image: "/static/img/LesShow/show5.jpg",
-          moveName: "左腿翘曲两头起",
+          picUrl: "/static/img/Movement/List/show5.jpg",
+          name: "左腿翘曲两头起",
           payload: "1x20"
         }
       ]
     };
+  },
+  computed: {
+    moveAmount: function() {
+      return this.moveList.length;
+    },
+    moveTitle: function() {
+      var bodyPart = "";
+      switch (this.$route.params.bodyParts) {
+        case "pecs":
+          bodyPart = "胸部";
+          break;
+        case "back":
+          bodyPart = "背部";
+          break;
+        case "shoulder":
+          bodyPart = "肩部";
+          break;
+        case "arm":
+          bodyPart = "手臂";
+          break;
+        case "neck":
+          bodyPart = "颈部";
+          break;
+        case "belly":
+          bodyPart = "腹部";
+          break;
+        case "waist":
+          bodyPart = "腰部";
+          break;
+        case "buttock":
+          bodyPart = "臀部";
+          break;
+        case "leg":
+          bodyPart = "腿部";
+          break;
+        case "wholebody":
+          bodyPart = "全身";
+          break;
+      }
+      return bodyPart;
+    }
+  },
+  mounted() {
+    this.$api
+      .getMoveList(this.$route.params.bodyParts)
+      .then(res => {
+        this.moveList = res.data.data;
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>

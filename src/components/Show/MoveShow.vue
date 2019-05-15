@@ -1,6 +1,8 @@
 <template>
   <div class="moveshow">
-    <div class="header-pic">
+    <button @click="test">test</button>
+    {{moveDetail.commonMistake}}
+    <!-- <div class="header-pic">
       <img :src="movePic">
     </div>
     <div class="content">
@@ -28,7 +30,7 @@
       <div class="img">
         <img :src="movePic">
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -36,19 +38,24 @@
 export default {
   data() {
     return {
-      moveName: "腹肌激活",
-      moveStep: [
-        "平躺在瑜伽垫上，双脚并拢，屈膝抬腿的同时将臀部略微抬起，下背部用力贴紧地面",
-        "绷紧身体，肩部略微离地，同时上下振动双手刺激腹肌收紧"
-      ],
-      breathe: ["全程保持均匀呼吸"],
-      moveFeeling: ["腹部始终紧绷，同时会逐渐产生灼烧感"],
-      commonMistake: [
-        "错误：用力伸头，导致颈部疼痛",
-        "解决：下颚始终贴紧颈部，同时后缩颈部"
-      ],
-      movePic: "/static/img/MoveShow/1500626509026.jpg"
+      moveDetail: {}
     };
+  },
+  methods: {
+    test() {
+      console.log(typeof this.moveDetail.commonMistake);
+      console.log(this.moveDetail.commonMistake);
+    }
+  },
+  created() {
+    this.$api
+      .getMoveDetail(this.$route.params.movementId)
+      .then(res => {
+        this.moveDetail = res.data.data[0];
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>

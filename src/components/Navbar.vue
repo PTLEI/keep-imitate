@@ -13,18 +13,22 @@
       <el-menu-item index="/Training">课程分类</el-menu-item>
       <el-menu-item index="/Movement">动作分类</el-menu-item>
     </el-submenu>
-    <el-menu-item class="login" index v-show="!islogin" @click="loginDialogShow">登陆/注册</el-menu-item>
-    <el-menu-item class="login" index v-show="islogin" style="z-index:9999999">
-      <img :src="picUrl" style="height: 60px; width: 60px; border-radius:50%">
+    <el-menu-item class="login" index v-show="!isLogin">
+      <span @click="loginDialogShow">登录</span>
+      /
+      <span @click="register">注册</span>
+    </el-menu-item>
+    <el-menu-item class="userHome" index v-show="isLogin">
+      <img :src="userInfo.headpic" style="height: 40px; width: 40px; border-radius:50%">
       <a href="#" type="text" id="nickname">
-        {{nickname}}
+        {{userInfo.nickname}}
         <div class="list">
           <ul>
             <li>
               <router-link to="/Setting/setting">个人中心</router-link>
             </li>
             <li>
-              <a @click="userExit">登出</a>
+              <a @click="exitUser">登出</a>
             </li>
           </ul>
         </div>
@@ -41,12 +45,12 @@
               v-model="loginData.password"
               type="password"
               placeholder="请输入用户密码"
-              @keyup.13.native="login(loginData.username, loginData.password)"
+              @keyup.13.native="login()"
             ></el-input>
           </el-form-item>
         </el-form>
       </div>
-      <el-button type="primary" @click="login(loginData.username, loginData.password)">登录</el-button>
+      <el-button type="primary" @click="login()">{{false ? "登录" : "注册"}}</el-button>
       <el-button type="info" @click="cancel">取消</el-button>
     </el-dialog>
   </el-menu>
@@ -63,20 +67,33 @@ export default {
       // activeIndex: "",
       // Nav路由模式
       router: true,
-      // 判断是否已经登录
-      islogin: false,
       // 登录Dialog显示
       visible: false,
       // 登录信息
       loginData: { username: "", password: "" },
-      picUrl: "",
-      nickname: "",
-      userid: ""
+      userInfo: {
+        headpic: "",
+        nickname: "",
+        userid: ""
+      }
     };
   },
   computed: {
     activeIndex: function() {
       return "/" + this.$route.path.split("/").reverse()[0];
+    },
+    // 判断是否已经登录
+    isLogin: function() {
+      if (sessionStorage.getItem("userInfo")) {
+        this.$store.commit(
+          "userStatus",
+          JSON.parse(sessionStorage.getItem("userInfo"))
+        );
+        this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+      } else {
+        this.$store.commit("userStatus", null);
+      }
+      return this.$store.getters.isLogin;
     }
   },
   methods: {
@@ -87,16 +104,50 @@ export default {
     loginDialogShow() {
       this.visible = true;
     },
-    login(username, password) {
+    register() {
+      // this.visible = true;
+    },
+    login() {
       if (this.loginData.username && this.loginData.password) {
-        this.$api.login(username, password);
-        Bus.$on("userInfo", res => {
-          console.log(res);
-          this.picUrl = res.headpic;
-          console.log(JSON.parse(res));
-          console.log(res.userid);
-          this.islogin = true;
-        });
+        this.$api
+          .login(this.loginData.username, this.loginData.password)
+          .then(res => {
+            if (res.data.status !== 200) {
+              Vue.prototype.$notify({
+                title: "登录失败",
+                message: "请检查账户",
+                type: "error",
+                offset: 50,
+                duration: 1000
+              });
+              return false;
+            } else if (res.data.status === 200) {
+              Vue.prototype.$notify({
+                title: "登录成功",
+                message: `你好，${res.data.data[0].nickname}!`,
+                type: "success",
+                offset: 50,
+                duration: 1000
+              });
+              sessionStorage.setItem(
+                "userInfo",
+                JSON.stringify(res.data.data[0])
+              );
+              this.$store.dispatch("setUser", res.data.data[0]);
+              this.userInfo = res.data.data[0];
+              this.loginData = {};
+              return true;
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          });
+
+        // 前一版登录
+        // Bus.$on("userInfo", res => {
+        //   res = JSON.parse(res);
+        //   this.picUrl = res.headpic;
+        // });
         this.visible = false;
       } else {
         this.$options.methods.Notice.bind(this)({
@@ -107,19 +158,16 @@ export default {
         return false;
       }
     },
-    userExit() {
+    exitUser() {
       this.$options.methods.Notice.bind(this)({
         title: "已登出",
         message: "部分功能将失效",
         type: "success"
       });
-      this.isLogin = false;
-      console.log(this.isLogin);
+      this.userInfo = {};
       sessionStorage.removeItem("userInfo");
-      console.log(this.$route.path.indexOf("user") > -1);
-      this.$route.path.indexOf("user") > -1
-        ? this.$router.push({ path: "/" })
-        : 0; //其中login是你定义的一个路由模块
+      this.$store.dispatch("exitUser");
+      console.log(this.isLogin);
     },
     Notice(obj) {
       this.$notify({
@@ -138,22 +186,23 @@ export default {
   mounted() {
     this.$nextTick(function() {
       if (sessionStorage.getItem("userInfo")) {
-        let info1 = JSON.parse(sessionStorage.getItem("userInfo"));
-        this.picUrl = info1.headlogo;
+        // let info1 = JSON.parse(sessionStorage.getItem("userInfo"));
+        let info1 = sessionStorage.getItem("userInfo");
+        console.log(info1);
+        this.picUrl = info1.headpic;
         this.nickname = info1.nickname;
         this.userid = info1.userid;
-        this.isLogin = true;
       }
     });
     let self = this;
     Bus.$on("userInfo", e => {
       self.$nextTick(() => {
         if (sessionStorage.getItem("userInfo")) {
-          let info1 = JSON.parse(sessionStorage.getItem("userInfo"));
-          self.picUrl = info1.headlogo;
+          // let info1 = JSON.parse(sessionStorage.getItem("userInfo"));
+          let info1 = sessionStorage.getItem("userInfo");
+          self.picUrl = info1.headpic;
           self.nickname = info1.nickname;
           self.userid = info1.userid;
-          self.isLogin = true;
         }
       });
       // console.log(`传来的数据是：${e}`)
@@ -170,6 +219,10 @@ export default {
   top: 0;
 }
 .login {
+  float: right;
+  padding: 0 30px;
+}
+.userHome {
   float: right;
   padding: 0 30px;
 }
@@ -196,10 +249,9 @@ a:hover {
   border-radius: 4px;
   right: 45px;
   height: 100px;
-  margin-top: -5px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
   transition: 0.4s ease-in-out;
-  transform: translate3d(0, -92px, 0);
+  transform: translate3d(0, -90px, 0);
   font-weight: lighter;
 }
 #nickname:hover .list {
@@ -209,14 +261,15 @@ a:hover {
   transform: translate3d(0, 0, 0);
 }
 .list ul {
-  width: 90px;
+  box-sizing: border-box;
+  width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 0 10px;
   height: 100px;
 }
 .list ul li {
   margin: 0;
-  width: 90px;
+  width: 100%;
   height: 50px;
   list-style: none;
 }

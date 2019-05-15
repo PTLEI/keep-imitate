@@ -11,7 +11,7 @@ import InformationDetail from '@/components/Information/InformationDetail'
 
 // 训练
 import Training from '@/components/Lesson/Training'
-import TrainingList from '@/components/Lesson/TrainingList';
+import LessonList from '@/components/Lesson/LessonList';
 import LesShow from '@/components/Show/LesShow'
 
 // 动作库
@@ -21,7 +21,7 @@ import MoveShow from '@/components/Show/MoveShow'
 
 import SettingNavbar from '@/components/SelfCenter/Setting/SettingNavbar'
 import Setup from '@/components/SelfCenter/Setting/Setup'
-import Binding from '@/components/SelfCenter/Setting/Binding'
+import TrainHistory from '@/components/SelfCenter/Setting/History'
 
 Vue.use(Router)
 
@@ -51,9 +51,10 @@ export default new Router({
     },
 
     {
-      path: '/Movement',
+      path: '/Movement/',
       name: 'movement',
-      component: Movement
+      component: Movement,
+      props: true
     },
     {
       path: '/Training',
@@ -61,29 +62,30 @@ export default new Router({
       component: Training
     },
 
-    // 动作库列表及详情
+    // 训练课程列表及详情
     {
-      path: '/MovementList',
-      name: 'movementlist',
-      component: MovementList
+      path: '/LessonList/:trainId',
+      name: 'lessonlist',
+      component: LessonList
     },
     {
-      path: '/MoveShow',
+      path: '/LesShow/:lessonId',
+      name: 'lesshow',
+      component: LesShow
+    },
+
+    // 动作库列表及详情
+    {
+      path: '/MovementList/:bodyParts',
+      name: 'movementlist',
+      component: MovementList,
+    },
+    {
+      path: '/MoveShow/:movementId',
       name: 'moveshow',
       component: MoveShow
     },
 
-    // 训练课程列表及详情
-    {
-      path: '/TrainingList',
-      name: 'traininglist',
-      component: TrainingList
-    },
-    {
-      path: '/LesShow',
-      name: 'lesshow',
-      component: LesShow
-    },
     {
       path: '/Setting',
       name: 'setting',
@@ -94,8 +96,8 @@ export default new Router({
           component: Setup,
         },
         {
-          path: 'binding',
-          component: Binding,
+          path: 'history',
+          component: TrainHistory,
         }
       ]
     }

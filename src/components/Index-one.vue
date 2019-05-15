@@ -54,7 +54,7 @@
       <h3>运动社区 & 分享健身成果，一起进步</h3>
       <h4>拍照记录每一天的变化，分享好友相互勉励，在 Keep 健身不再是孤独的坚持。</h4>
       <div class="community-wrap">
-        <a href="#" class="community-entry">
+        <a href="#" class="community-entry" @click="test">
           <div>你好</div>
         </a>
         <a href="#" class="community-entry"></a>
@@ -83,6 +83,18 @@ import carousel from "@/components/Carousel";
 export default {
   components: {
     carousel
+  },
+  methods: {
+    test() {
+      this.$api
+        .test()
+        .then(res => {
+          alert(res.data);
+        })
+        .catch(error => {
+          console.log();
+        });
+    }
   }
 };
 </script>

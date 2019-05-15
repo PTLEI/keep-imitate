@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
+import store from './vuex/store';
 import VueLazyload from 'vue-lazyload'
 
 import api from '../static/api/api'
@@ -24,6 +24,7 @@ Vue.use(VueLazyload)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

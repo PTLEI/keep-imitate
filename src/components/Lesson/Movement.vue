@@ -5,84 +5,12 @@
       <p>动作的规范不但可以更高效的达到训练目的更能减少运动损伤</p>
     </div>
     <ul class="move-list clearfix">
-      <li>
-        <router-link :to="{ name: 'movementlist'}">
+      <li v-for="(item, index) in partList" :key="index">
+        <router-link :to="{ name: 'movementlist', params: {bodyParts: item.partName}}">
           <div class="img">
-            <img src="static/img/55963b0e73800000.png">
+            <img :src="item.picUrl">
           </div>
-          <div class="name">胸部</div>
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'moveshow'}">
-          <div class="img">
-            <img src="static/img/55963ab1a4c00000.png">
-          </div>
-          <div class="name">背部</div>
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'moveshow'}">
-          <div class="img">
-            <img src="static/img/55963b1db3c00000.png">
-          </div>
-          <div class="name">肩部</div>
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'moveshow'}">
-          <div class="img">
-            <img src="static/img/559639a46e400000.png">
-          </div>
-          <div class="name">手臂</div>
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'moveshow'}">
-          <div class="img">
-            <img src="static/img/55963afccdc00000.png">
-          </div>
-          <div class="name">颈部</div>
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'moveshow'}">
-          <div class="img">
-            <img src="static/img/55963b3fc0400000.png">
-          </div>
-          <div class="name">腹部</div>
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'moveshow'}">
-          <div class="img">
-            <img src="static/img/55963b2cc0800000.png">
-          </div>
-          <div class="name">腰部</div>
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'moveshow'}">
-          <div class="img">
-            <img src="static/img/559639594f800000.png">
-          </div>
-          <div class="name">臀部</div>
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'moveshow'}">
-          <div class="img">
-            <img src="static/img/55963ad31b400000.png">
-          </div>
-          <div class="name">腿部</div>
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'moveshow'}">
-          <div class="img">
-            <img src="static/img/559638c467800000.png">
-          </div>
-          <div class="name">全身</div>
+          <div class="name">{{item.bodyString}}</div>
         </router-link>
       </li>
     </ul>
@@ -94,7 +22,59 @@ export default {
     return {
       moveName: "",
       imgSrc: "",
-      moveRouter: ""
+      moveRouter: "",
+      partList: [
+        {
+          partName: "pecs",
+          bodyString: "胸部",
+          picUrl: "static/img/55963b0e73800000.png"
+        },
+        {
+          partName: "back",
+          bodyString: "背部",
+          picUrl: "static/img/55963ab1a4c00000.png"
+        },
+        {
+          partName: "shoulder",
+          bodyString: "肩部",
+          picUrl: "static/img/55963b1db3c00000.png"
+        },
+        {
+          partName: "arm",
+          bodyString: "手臂",
+          picUrl: "static/img/559639a46e400000.png"
+        },
+        {
+          partName: "neck",
+          bodyString: "颈部",
+          picUrl: "static/img/55963afccdc00000.png"
+        },
+        {
+          partName: "belly",
+          bodyString: "腹部",
+          picUrl: "static/img/55963b3fc0400000.png"
+        },
+        {
+          partName: "waist",
+          bodyString: "腰部",
+          picUrl: "static/img/55963b2cc0800000.png"
+        },
+        {
+          partName: "buttock",
+          bodyString: "臀部",
+          picUrl: "static/img/559639594f800000.png"
+        },
+        {
+          partName: "leg",
+          bodyString: "腿部",
+          picUrl: "static/img/55963ad31b400000.png"
+        },
+        {
+          partName: "wholebody",
+          bodyString: "全身",
+          picUrl: "static/img/559638c467800000.png"
+        }
+      ]
     };
   }
 };
