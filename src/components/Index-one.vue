@@ -51,30 +51,17 @@
       </div>
     </section>
     <section class="community-index">
-      <h3>运动社区 & 分享健身成果，一起进步</h3>
-      <h4>拍照记录每一天的变化，分享好友相互勉励，在 Keep 健身不再是孤独的坚持。</h4>
+      <h3>运动资讯 & 分享健身成果，一起进步</h3>
+      <h4>记录每一天的变化，分享好友相互勉励，在 Keep 健身不再是孤独的坚持。</h4>
       <div class="community-wrap">
-        <a href="#" class="community-entry" @click="test">
-          <div>你好</div>
-        </a>
-        <a href="#" class="community-entry"></a>
-        <a href="#" class="community-entry"></a>
-        <a href="#" class="community-entry"></a>
-        <a href="#" class="community-entry"></a>
-        <a href="#" class="community-entry"></a>
+        <div class="community-entry"></div>
+        <div class="community-entry"></div>
+        <div class="community-entry"></div>
+        <div class="community-entry"></div>
+        <div class="community-entry"></div>
+        <div class="community-entry"></div>
       </div>
     </section>
-    <!-- <section class="shop-index">
-            <h3>品牌装备 & 商城，伴你尽兴挥汗</h3>
-            <h4>Keep 品牌服饰、器械及智能装备，打破 App 边界成为你触手可及的运动伙伴。</h4>
-            <div class="shop-wrap" style="background-image: url(static/img/background-img/storebg.jpg);">
-                <div class="shop-wrap-inner">
-                    <div class="shop-pic1"></div>
-                    <div class="shop-pic2"></div>
-                    <div class="shop-btn"></div>
-                </div>
-            </div>
-    </section>-->
   </div>
 </template>
 
@@ -215,6 +202,12 @@ a .training-detail {
   background-position: center center;
   margin: 3px 3px;
   box-sizing: border-box;
+  background-color: #fff;
+}
+.community-entry:hover {
+  background-color: aquamarine;
+  transform: scale(1.05, 1.05);
+  cursor: pointer;
 }
 .community-entry:nth-child(1) {
   width: 21.45%;
@@ -251,37 +244,6 @@ a .training-detail {
   height: 356px;
   left: 75.69%;
   bottom: 3px;
-}
-
-/* 商城块********************************** */
-.shop-wrap-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.shop-pic1 {
-  position: absolute;
-  background-color: rgb(153, 146, 158);
-  margin-top: 6px;
-  left: 0;
-  height: 70%;
-  width: 60%;
-}
-.shop-pic2 {
-  position: absolute;
-  background-color: rgb(153, 146, 158);
-  top: 73%;
-  margin: auto;
-  width: 100%;
-  height: 23%;
-}
-.shop-btn {
-  position: absolute;
-  background-color: rgb(153, 146, 158);
-  margin-top: 6px;
-  right: 0;
-  height: 70%;
-  width: 39%;
 }
 
 /* ********************************************************** */

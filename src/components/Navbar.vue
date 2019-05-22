@@ -50,7 +50,7 @@
           </el-form-item>
         </el-form>
       </div>
-      <el-button type="primary" @click="login()">{{false ? "登录" : "注册"}}</el-button>
+      <el-button type="primary" @click="login()">{{true ? "登录" : "注册"}}</el-button>
       <el-button type="info" @click="cancel">取消</el-button>
     </el-dialog>
   </el-menu>
@@ -142,12 +142,6 @@ export default {
           .catch(error => {
             console.log(error);
           });
-
-        // 前一版登录
-        // Bus.$on("userInfo", res => {
-        //   res = JSON.parse(res);
-        //   this.picUrl = res.headpic;
-        // });
         this.visible = false;
       } else {
         this.$options.methods.Notice.bind(this)({

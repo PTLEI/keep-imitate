@@ -1,8 +1,3 @@
-export const tst = (state, txt) => {
-    if (txt) {
-        console.log(txt, '1');
-    }
-}
 export const userStatus = (state, user) => {
     if (user) {
         state.currentUser = user;
