@@ -40,6 +40,23 @@ let login = function (username, password) {
         })
     })
 }
+/**
+ * 注册
+ */
+let register = function (username, password) {
+    return new Promise((resolve, reject) => {
+        axios.post(config.registerUrl, {
+            params: {
+                username: username,
+                password: password
+            }
+        }).then(res => {
+            resolve(res);
+        }).catch(error => {
+            reject(error);
+        })
+    })
+}
 
 /**
  * 获取资讯列表模块
@@ -113,11 +130,12 @@ let getLessonDetail = function (id) {
 /**
  * 动作列表byBodyPart
  */
-let getMoveList = function (bodyPart) {
+let getMoveList = function (bodyPart, level) {
     return new Promise((resolve, reject) => {
         axios.get(config.getMoveList, {
             params: {
-                bodyPart: bodyPart
+                bodyPart: bodyPart,
+                level: level
             }
         }).then(res => {
             resolve(res);
@@ -162,6 +180,7 @@ let getHistory = function (id) {
 export default {
     test,
     login,
+    register,
     getChoiceList,
     getTrainList,
     getLessonList,

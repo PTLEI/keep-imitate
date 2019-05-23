@@ -54,12 +54,19 @@
       <h3>运动资讯 & 分享健身成果，一起进步</h3>
       <h4>记录每一天的变化，分享好友相互勉励，在 Keep 健身不再是孤独的坚持。</h4>
       <div class="community-wrap">
-        <div class="community-entry"></div>
-        <div class="community-entry"></div>
-        <div class="community-entry"></div>
-        <div class="community-entry"></div>
-        <div class="community-entry"></div>
-        <div class="community-entry"></div>
+        <div
+          class="community-entry"
+          v-for="(item, index) in infoItem"
+          :style="{backgroundImage:'url(' + item.picurl + ')'}"
+        >
+          <div class="mark"/>
+          <h4 class="info-title">{{item.title}}</h4>
+        </div>
+        <div class="community-text">
+          <h3>体验不一样的生活</h3>
+          <div>在这里你可以阅读精彩的健身趣闻，发现生活的美好</div>
+          <el-button class="find-info" type="info" round @click="findInfo">发现精选</el-button>
+        </div>
       </div>
     </section>
   </div>
@@ -71,16 +78,39 @@ export default {
   components: {
     carousel
   },
+  data() {
+    return {
+      infoItem: [
+        {
+          title: "高糖饮料与早死风险的关系",
+          picurl: "/static/img/InformationPic/highsugardrink.webp.jpg"
+        },
+        {
+          title: "我跨过山和大海，却磨坏了膝盖！",
+          picurl: "/static/img/InformationPic/crossmountain.webp.jpg"
+        },
+        {
+          title: "9个月的魔鬼训练造就今日的惊奇队长",
+          picurl: "/static/img/InformationPic/marvel.png"
+        },
+        {
+          title: "吃饱也能瘦！红米减肥餐!",
+          picurl: "/static/img/InformationPic/redrice.webp.jpg"
+        },
+        {
+          title: "偶遇大型“整容现场”？不，他们只是减肥成功了而已",
+          picurl: "/static/img/InformationPic/reduceweight.webp.jpg"
+        },
+        {
+          title: "“令人唏嘘、自暴自弃、大腹便便”的雷神是如何练成的？",
+          picurl: "/static/img/InformationPic/thor.png"
+        }
+      ]
+    };
+  },
   methods: {
-    test() {
-      this.$api
-        .test()
-        .then(res => {
-          alert(res.data);
-        })
-        .catch(error => {
-          console.log();
-        });
+    findInfo() {
+      this.$router.push({ name: "InformationList" });
     }
   }
 };
@@ -202,10 +232,30 @@ a .training-detail {
   background-position: center center;
   margin: 3px 3px;
   box-sizing: border-box;
-  background-color: #fff;
+}
+.mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.info-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-family: Tahoma, "Microsoft YaHei", sans-serif;
+  font-weight: normal;
+  text-align: left;
+  text-indent: 1.5em;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 2;
 }
 .community-entry:hover {
-  background-color: aquamarine;
   transform: scale(1.05, 1.05);
   cursor: pointer;
 }
@@ -245,8 +295,21 @@ a .training-detail {
   left: 75.69%;
   bottom: 3px;
 }
-
-/* ********************************************************** */
+.community-text {
+  position: absolute;
+  bottom: 108px;
+  left: 25%;
+  width: 300px;
+  color: #8e8893;
+}
+.community-text h3 {
+  color: #ffffff;
+  text-align: left;
+}
+.community-text .find-info {
+  margin-top: 20px;
+}
+/* ************************************************ */
 a:link,
 a:visited {
   display: block;
@@ -263,6 +326,4 @@ a:active {
   background-color: aquamarine;
   transform: scale(1.1, 1.1);
 }
-
-/* style="background-image: url(static\img\Index_img1.jpg)" */
 </style>

@@ -20,20 +20,22 @@ export default {
     return {
       infoList: [
         {
-          image: "/static/img/InformationPic/test.png",
-          title: "这里是标题",
+          image: "/static/img/InformationPic/thor.png",
+          title: "“令人唏嘘、自暴自弃、大腹便便”的雷神是如何练成的？",
           text:
-            "内地沈阳一个健身运动场近日兴起一种新运动，不少人都在一条单杠上挂上U字型带子，垫上软垫后，就将下巴及后脑悬在带子上，固定好就双脚离地，如荡秋千一样前后摇摆。不知情的人远看，会误以为是一群人在集体上吊，但其实他们只是在做自创的颈椎牵引练习。"
+            "《复仇者联盟3》上映之初几乎场场爆满，而饰演雷神的Chris Hemsworth凭借大肚腩再次成为亮点。但真正的雷神可是英俊潇洒，线条感十足的。Chris为了做好雷神，付出了难以想象的汗水。"
         },
         {
-          image: "",
+          image: "/static/img/InformationPic/marvel.png",
           title: "9个月的魔鬼训练造就今日的惊奇队长",
-          text: ""
+          text:
+            "美国电影《复仇者联盟4》票房屡破记录，得观众热烈支持，主角Brie Larson（贝儿·娜森）功不可没，不过要成为惊奇队长并不容易，故她在拍摄前，曾实行一连串地狱式训练，让自己变得健硕，配得上这个角色。"
         },
         {
-          image: "",
+          image: "/static/img/InformationPic/taimei.png",
           title: "15个月狂减50磅！台妹分享4大减肥秘诀成功健康瘦身！！！",
-          text: ""
+          text:
+            "每个女生都爱美，减肥尤其重要，台湾有位YouTube朴梨JOU就公开自己在15个月内狂减23kg的经历，遵循4大要点，让自己成功健康减肥不降cup ，一起来看看她到底如何做到吧！"
         }
       ]
     };
@@ -91,7 +93,7 @@ ul {
   position: relative;
   display: inline-block;
   left: 0;
-  width: 200px;
+  width: 250px;
   height: 100%;
   background-size: cover;
   background-position: center center;
@@ -103,9 +105,9 @@ ul {
   margin: 0;
   font-family: Tahoma, "Microsoft YaHei", sans-serif;
   font-weight: normal;
-  left: 235px;
+  left: 285px;
   height: 30px;
-  width: calc(100% - 300px);
+  width: calc(100% - 350px);
   color: #333;
   white-space: nowrap;
   overflow: hidden;
@@ -114,9 +116,9 @@ ul {
 .single-info-text {
   position: absolute;
   top: 70px;
-  left: 235px;
+  left: 285px;
   height: calc(100% - 70px);
-  width: calc(100% - 300px);
+  width: calc(100% - 350px);
   font-size: small;
   color: #333;
   overflow: hidden;

@@ -1,6 +1,6 @@
 <template>
   <div class="information-wrapper">
-    <h2 class="info-title">9个月的魔鬼训练造就今日的惊奇队长</h2>
+    <h1 class="info-title">9个月的魔鬼训练造就今日的惊奇队长</h1>
     <p style="color: #cecece">作者 | 时间</p>
     <p>美国电影《复仇者联盟4》票房屡破记录，得观众热烈支持，主角Brie Larson（贝儿·娜森）功不可没，不过要成为惊奇队长并不容易，故她在拍摄前，曾实行一连串地狱式训练，让自己变得健硕，配得上这个角色。</p>
     <p>

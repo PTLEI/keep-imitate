@@ -9,7 +9,7 @@
           <li v-for="(informationInfo,index) in information" :key="index">
             <a href="#" class="imgshow">
               <img v-lazy="informationInfo.src">
-              <p class="info-text">{{informationInfo.content}}</p>
+              <p class="info-text">{{informationInfo.title}}</p>
             </a>
           </li>
         </ul>
@@ -21,7 +21,7 @@
           <li v-for="(informationInfo,index) in information2" :key="index">
             <a href="#" class="imgshow">
               <img v-lazy="informationInfo.src">
-              <p>{{informationInfo.content}}</p>
+              <p>{{informationInfo.title}}</p>
             </a>
           </li>
         </ul>
@@ -43,12 +43,14 @@ export default {
     return {
       information: [
         {
-          src: "/static/img/carousel2.jpg",
+          src: "/static/img/InformationPic/a11sfcjmvjhg.png",
+          title: "9个月的魔鬼训练造就今日的惊奇队长",
           content:
             "美国电影《复仇者联盟4》票房屡破记录，得观众热烈支持，主角Brie Larson（贝儿·娜森）功不可没，不过要成为惊奇队长并不容易，故她在拍摄前，曾实行一连串地狱式训练，让自己变得健硕，配得上这个角色。"
         },
         {
-          src: "/static/img/carousel4.jpg",
+          src: "/static/img/InformationPic/taimei.png",
+          title: "15个月狂减50磅！台妹分享4大减肥秘诀成功健康瘦身！！！",
           content:
             "美国电影《复仇者联盟4》票房屡破记录，得观众热烈支持，主角Brie Larson（贝儿·娜森）功不可没，不过要成为惊奇队长并不容易，故她在拍摄前，曾实行一连串地狱式训练，让自己变得健硕，配得上这个角色。"
         }
@@ -56,24 +58,15 @@ export default {
       information2: [
         {
           src: "/static/img/carousel1.jpg",
+          title: "我跨过山和大海，却磨坏了膝盖！",
           content:
             "内容展示1测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试"
         },
         {
-          src: "/static/img/carousel3.jpg",
+          src: "/static/img/InformationPic/thor.png",
+          title: "“令人唏嘘、自暴自弃、大腹便便”的雷神是如何练成的？",
           content:
             "内容展示2测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试"
-        }
-      ],
-      information3: [
-        {
-          src: "/static/img/carousel3.jpg",
-          content:
-            "这是最下边的一组了!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        },
-        {
-          src: "/static/img/carousel2.jpg",
-          content: "这是最下边的一组了"
         }
       ]
     };
@@ -138,9 +131,13 @@ li {
 }
 .entries p {
   width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  text-indent: 2em;
+  text-align: left;
   word-break: break-all;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   /* text-overflow: ellipsis; */
@@ -162,11 +159,20 @@ li {
 }
 .imgshow {
   display: block;
+  height: 270px;
+  transition: all 300ms ease;
 }
-img {
+.imgshow:hover {
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
+  transform: translate3d(0, -3px, 0);
+}
+.imgshow img {
   width: 100%;
-  height: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center center;
 }
+
 a {
   /* text-decoration: none; */
   font-size: 16px;

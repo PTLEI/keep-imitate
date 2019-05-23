@@ -16,7 +16,7 @@
     <el-menu-item class="login" index v-show="!isLogin">
       <span @click="loginDialogShow">登录</span>
       /
-      <span @click="register">注册</span>
+      <span @click="registerDialogShow">注册</span>
     </el-menu-item>
     <el-menu-item class="userHome" index v-show="isLogin">
       <img :src="userInfo.headpic" style="height: 40px; width: 40px; border-radius:50%">
@@ -34,7 +34,7 @@
         </div>
       </a>
     </el-menu-item>
-    <el-dialog :visible.sync="visible" title="登录" width="586px">
+    <el-dialog :visible.sync="Lvisible" title="登录" width="586px">
       <div class="loginform">
         <el-form :model="loginData" label-position="right" label-width="100px">
           <el-form-item label="用户：">
@@ -50,7 +50,25 @@
           </el-form-item>
         </el-form>
       </div>
-      <el-button type="primary" @click="login()">{{true ? "登录" : "注册"}}</el-button>
+      <el-button type="primary" @click="login()">登录</el-button>
+      <el-button type="info" @click="cancel">取消</el-button>
+    </el-dialog>
+
+    <el-dialog :visible.sync="Rvisible" title="注册" width="586px">
+      <div class="loginform">
+        <el-form :model="registerData" label-position="right" label-width="100px">
+          <el-form-item label="用户：">
+            <el-input v-model="registerData.username" placeholder="请输入用户账号"></el-input>
+          </el-form-item>
+          <el-form-item label="密码：">
+            <el-input v-model="registerData.password" type="password" placeholder="请输入用户密码"></el-input>
+          </el-form-item>
+          <el-form-item label="确认密码：">
+            <el-input v-model="registerData.confirm" type="password" placeholder="请再次输入用户密码"></el-input>
+          </el-form-item>
+        </el-form>
+      </div>
+      <el-button type="primary" @click="register()">注册</el-button>
       <el-button type="info" @click="cancel">取消</el-button>
     </el-dialog>
   </el-menu>
@@ -68,9 +86,13 @@ export default {
       // Nav路由模式
       router: true,
       // 登录Dialog显示
-      visible: false,
+      Lvisible: false,
+      // 注册Dialog
+      Rvisible: false,
       // 登录信息
       loginData: { username: "", password: "" },
+      // 注册信息
+      registerData: { username: "", password: "", confirm: "" },
       userInfo: {
         headpic: "",
         nickname: "",
@@ -102,10 +124,10 @@ export default {
     },
     // 登录点击
     loginDialogShow() {
-      this.visible = true;
+      this.Lvisible = true;
     },
-    register() {
-      // this.visible = true;
+    registerDialogShow() {
+      this.Rvisible = true;
     },
     login() {
       if (this.loginData.username && this.loginData.password) {
@@ -142,7 +164,7 @@ export default {
           .catch(error => {
             console.log(error);
           });
-        this.visible = false;
+        this.Lvisible = false;
       } else {
         this.$options.methods.Notice.bind(this)({
           title: "校验失败",
@@ -163,18 +185,69 @@ export default {
       this.$store.dispatch("exitUser");
       console.log(this.isLogin);
     },
+    register() {
+      if (
+        this.registerData.username &&
+        this.registerData.password &&
+        this.registerData.confirm
+      ) {
+        if (this.registerData.password !== this.registerData.confirm) {
+          this.$options.methods.Notice.bind(this)({
+            title: "提示",
+            message: "两次输入密码不一致",
+            type: "warning",
+            duration: 5000
+          });
+        } else {
+          this.$api
+            .register(this.registerData.username, this.register.password)
+            .then(res => {
+              if (res.data.status === 202) {
+                this.$options.methods.Notice.bing(this)({
+                  title: "失败",
+                  message: "用户已经存在",
+                  type: "error",
+                  duration: 5000
+                });
+              } else if (res.data.status === 200) {
+                this.$options.methods.Notice.bing(this)({
+                  title: "注册成功",
+                  message: "可以使用注册账户进行登录",
+                  type: "success",
+                  duration: 2000
+                });
+              } else {
+                this.$options.methods.Notice.bing(this)({
+                  title: "注册失败",
+                  message: "请重新尝试",
+                  type: "error",
+                  duration: 5000
+                });
+              }
+            });
+        }
+      } else {
+        this.$options.methods.Notice.bind(this)({
+          title: "校验失败",
+          message: "请填写完整",
+          type: "error"
+        });
+        return false;
+      }
+    },
     Notice(obj) {
       this.$notify({
         title: obj.title,
         message: obj.message,
         position: "top-right",
         type: obj.type,
-        duration: 1000,
+        duration: obj.duration || 1000,
         offset: 50
       });
     },
     cancel() {
-      this.visible = false;
+      this.Lvisible = false;
+      this.Rvisible = false;
     }
   },
   mounted() {
