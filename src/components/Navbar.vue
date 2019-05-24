@@ -158,13 +158,13 @@ export default {
               this.$store.dispatch("setUser", res.data.data[0]);
               this.userInfo = res.data.data[0];
               this.loginData = {};
+              this.Lvisible = false;
               return true;
             }
           })
           .catch(error => {
             console.log(error);
           });
-        this.Lvisible = false;
       } else {
         this.$options.methods.Notice.bind(this)({
           title: "校验失败",
@@ -200,24 +200,27 @@ export default {
           });
         } else {
           this.$api
-            .register(this.registerData.username, this.register.password)
+            .register(this.registerData.username, this.registerData.password)
             .then(res => {
+              console.log(res.data);
               if (res.data.status === 202) {
-                this.$options.methods.Notice.bing(this)({
+                this.$options.methods.Notice.bind(this)({
                   title: "失败",
-                  message: "用户已经存在",
+                  message: "用户账号已经存在",
                   type: "error",
                   duration: 5000
                 });
               } else if (res.data.status === 200) {
-                this.$options.methods.Notice.bing(this)({
+                this.$options.methods.Notice.bind(this)({
                   title: "注册成功",
                   message: "可以使用注册账户进行登录",
                   type: "success",
                   duration: 2000
                 });
+                this.registerData = {};
+                this.Rvisible = false;
               } else {
-                this.$options.methods.Notice.bing(this)({
+                this.$options.methods.Notice.bind(this)({
                   title: "注册失败",
                   message: "请重新尝试",
                   type: "error",
@@ -255,7 +258,6 @@ export default {
       if (sessionStorage.getItem("userInfo")) {
         // let info1 = JSON.parse(sessionStorage.getItem("userInfo"));
         let info1 = sessionStorage.getItem("userInfo");
-        console.log(info1);
         this.picUrl = info1.headpic;
         this.nickname = info1.nickname;
         this.userid = info1.userid;

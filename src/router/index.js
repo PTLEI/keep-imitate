@@ -22,7 +22,8 @@ import MoveShow from '@/components/Show/MoveShow'
 import SettingNavbar from '@/components/SelfCenter/Setting/SettingNavbar'
 import Setup from '@/components/SelfCenter/Setting/Setup'
 import TrainHistory from '@/components/SelfCenter/Setting/History'
-
+// 404
+import Page404 from '@/components/404/Page404';
 Vue.use(Router)
 
 export default new Router({
@@ -64,6 +65,11 @@ export default new Router({
 
     // 训练课程列表及详情
     {
+      path: '/LessonList',
+      name: 'alllessonlist',
+      component: LessonList
+    },
+    {
       path: '/LessonList/:trainId',
       name: 'lessonlist',
       component: LessonList
@@ -100,6 +106,12 @@ export default new Router({
           component: TrainHistory,
         }
       ]
+    },
+    {
+      path: '/404', name: '404', component: Page404
+    },
+    {
+      path: '*', redirect: '/404'
     }
   ]
 })

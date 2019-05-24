@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <navbar></navbar>
+    <navbar v-if="!notFind"></navbar>
     <router-view/>
-    <myFooter></myFooter>
+    <myFooter v-if="!notFind"></myFooter>
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
   components: {
     Navbar,
     myFooter
+  },
+  computed: {
+    notFind: function() {
+      return this.$route.path.split("/").reverse()[0] === "404";
+    }
   }
 };
 </script>
@@ -28,7 +33,7 @@ export default {
 }
 body {
   margin: 0;
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
 }
 a {
   text-decoration: none;

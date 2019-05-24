@@ -97,7 +97,10 @@ export default {
   },
   mounted() {
     let temp = 0;
-    if (this.$store.getters.currentUser) {
+    if (
+      this.$store.getters.currentUser &&
+      this.$store.getters.currentUser.height
+    ) {
       let height = this.$store.getters.currentUser.height;
       let weight = this.$store.getters.currentUser.weight;
       let BMI = Math.floor((weight / (height * height)) * 10) / 10;

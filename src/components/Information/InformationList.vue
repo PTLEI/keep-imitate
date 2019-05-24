@@ -86,6 +86,7 @@ ul {
   transition: all 300ms ease;
 }
 .single-info:hover {
+  background-color: #fff;
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
   transform: translate3d(0, -3px, 0);
 }

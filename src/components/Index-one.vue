@@ -1,74 +1,80 @@
 <template>
   <div id="Index-myone">
-    <carousel height="600px"/>
-    <section class="training-index">
-      <h3>量体裁衣 & 多种健身训练供你选择</h3>
-      <h4>训练计划针对不同人群、各种器械和阶段健身目标组合编排，适用最广泛的健身场景。</h4>
-      <div
-        class="training-wrap"
-        style="background-image: url(static/img/background-img/storebg.jpg);"
-      >
-        <div class="training-block">
-          <a href="#/LesShow" class="training-item">
-            <div class="training-detail" style="background-image: url(static/img/index_img1.jpg)">
-              <div class="training-title">瘦腿训练</div>
-              <div style="text-align: left">13分钟 49千卡</div>
-              <div class="training-population">48，385，041人训练</div>
-            </div>
-          </a>
-          <a href="#/LesShow" class="training-item">
-            <div class="training-detail" style="background-image: url(static/img/index_img2.jpg)">
-              <div class="training-title">马甲线养成</div>
-              <div style="text-align: left">12分钟 61千卡</div>
-              <div class="training-population">49，252，615人训练</div>
-            </div>
-          </a>
-          <a href="#/LesShow" class="training-item">
-            <div class="training-detail" style="background-image: url(static/img/index_img3.jpg)">
-              <div class="training-title">瑜伽·身体韵律</div>
-              <div style="text-align: left">32分钟 135千卡</div>
-              <div class="training-population">928，978人训练</div>
-            </div>
-          </a>
+    <carousel class="cal-block" height="600px"/>
+    <div class="section-body">
+      <section class="training-index">
+        <h3>量体裁衣 & 多种健身训练供你选择</h3>
+        <h4>训练计划针对不同人群、各种器械和阶段健身目标组合编排，适用最广泛的健身场景。</h4>
+        <div
+          class="training-wrap"
+          style="background-image: url(static/img/background-img/storebg.jpg);"
+        >
+          <div class="training-block">
+            <a href="#/LesShow" class="training-item">
+              <div class="training-detail" style="background-image: url(static/img/index_img1.jpg)">
+                <div class="training-title">瘦腿训练</div>
+                <div style="text-align: left">13分钟 49千卡</div>
+                <div class="training-population">48，385，041人训练</div>
+              </div>
+            </a>
+            <a href="#/LesShow" class="training-item">
+              <div class="training-detail" style="background-image: url(static/img/index_img2.jpg)">
+                <div class="training-title">马甲线养成</div>
+                <div style="text-align: left">12分钟 61千卡</div>
+                <div class="training-population">49，252，615人训练</div>
+              </div>
+            </a>
+            <a href="#/LesShow" class="training-item">
+              <div class="training-detail" style="background-image: url(static/img/index_img3.jpg)">
+                <div class="training-title">瑜伽·身体韵律</div>
+                <div style="text-align: left">32分钟 135千卡</div>
+                <div class="training-population">928，978人训练</div>
+              </div>
+            </a>
+          </div>
+          <div class="training-text">
+            <h3>坚持训练改变自我</h3>
+            <div>找到适合你的、感兴趣的，完成人生的逆袭</div>
+            <el-button class="find-training" type="info" round @click="findTraining">查看课程</el-button>
+          </div>
         </div>
-        <div class></div>
-      </div>
-    </section>
-    <section class="run-index">
-      <h3>户外跑步 & 精准跑步记录，让你的跑步更加系统</h3>
-      <h4>精准跑步路线记录，跑前热身与跑后拉伸，Keep 提供更加完善和专业的跑步指导。</h4>
-      <div class="run-wrap" style="background-image: url(static/img/background-img/runbg.jpg);">
-        <div class="run-wrap-inner">
-          <div class="run-block">
-            <div class="run-speed">
-              <img src="static/img/index_img4.jpg">
-            </div>
-            <div class="run-frequency">
-              <img src="static/img/runchart.png">
+      </section>
+      <section class="community-index">
+        <h3>运动资讯 & 分享健身成果，一起进步</h3>
+        <h4>记录每一天的变化，分享好友相互勉励，在 Keep 健身不再是孤独的坚持。</h4>
+        <div class="community-wrap">
+          <div
+            class="community-entry"
+            v-for="(item, index) in infoItem"
+            :style="{backgroundImage:'url(' + item.picurl + ')'}"
+          >
+            <div class="mark"/>
+            <h4 class="info-title">{{item.title}}</h4>
+          </div>
+          <div class="community-text">
+            <h3>体验不一样的生活</h3>
+            <div>在这里你可以阅读精彩的健身趣闻，发现生活的美好</div>
+            <el-button class="find-info" type="info" round @click="findInfo">发现精选</el-button>
+          </div>
+        </div>
+      </section>
+      <section class="run-index">
+        <h3>户外跑步 & 精准跑步记录，让你的跑步更加系统</h3>
+        <h4>精准跑步路线记录，跑前热身与跑后拉伸，Keep 提供更加完善和专业的跑步指导。</h4>
+        <div class="run-wrap" style="background-image: url(static/img/background-img/runbg.jpg);">
+          <div class="run-wrap-inner">
+            <div class="run-block">
+              <div class="run-speed">
+                <img src="static/img/index_img4.jpg">
+              </div>
+              <div class="run-frequency">
+                <img src="static/img/runchart.png">
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="community-index">
-      <h3>运动资讯 & 分享健身成果，一起进步</h3>
-      <h4>记录每一天的变化，分享好友相互勉励，在 Keep 健身不再是孤独的坚持。</h4>
-      <div class="community-wrap">
-        <div
-          class="community-entry"
-          v-for="(item, index) in infoItem"
-          :style="{backgroundImage:'url(' + item.picurl + ')'}"
-        >
-          <div class="mark"/>
-          <h4 class="info-title">{{item.title}}</h4>
-        </div>
-        <div class="community-text">
-          <h3>体验不一样的生活</h3>
-          <div>在这里你可以阅读精彩的健身趣闻，发现生活的美好</div>
-          <el-button class="find-info" type="info" round @click="findInfo">发现精选</el-button>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -111,8 +117,29 @@ export default {
   methods: {
     findInfo() {
       this.$router.push({ name: "InformationList" });
+    },
+    findTraining() {
+      this.$router.push({ name: "training" });
     }
   }
+  // mounted() {
+  //   (function() {
+  //     var height = window.innerHeight,
+  //       width = document.body.clientWidth;
+  //     if (typeof heigth != "number") {
+  //       height = document.body.clientHeight;
+  //     }
+  //     console.log(height, width);
+  //     var ratio = height / width;
+  //     document.write(
+  //       "<style>.cal-block{padding-bottom:" +
+  //         ratio * 100 +
+  //         "% !important;}.section-body{padding-top:" +
+  //         ratio * 100 +
+  //         "%;}</style>"
+  //     );
+  //   })();
+  // }
 };
 </script>
 
@@ -126,10 +153,18 @@ h4 {
 h4 {
   opacity: 0.5;
 }
+/* .cal-block {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+} */
+/* .section-body {
+  background-color: #fafafa;
+} */
 
 .training-wrap,
-.run-wrap,
-.shop-wrap {
+.run-wrap {
   position: relative;
   height: 636px;
   margin: 20px 0;
@@ -180,7 +215,20 @@ a .training-detail {
   background-size: 100%;
   padding: 20px;
 }
-
+.training-text {
+  position: absolute;
+  bottom: 108px;
+  right: 25%;
+  width: 300px;
+  color: #8e8893;
+}
+.training-text h3 {
+  color: #ffffff;
+  text-align: left;
+}
+.training-text .find-training {
+  margin-top: 20px;
+}
 /* 跑步块 ***********************************/
 .run-wrap-inner {
   position: relative;

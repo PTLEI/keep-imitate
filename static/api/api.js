@@ -129,14 +129,13 @@ let getLessonDetail = function (id) {
 
 /**
  * 动作列表byBodyPart
+ * 使用POST请求是为确保前端所传数据格式不变，GET请求会使数据变为string格式
  */
 let getMoveList = function (bodyPart, level) {
     return new Promise((resolve, reject) => {
-        axios.get(config.getMoveList, {
-            params: {
-                bodyPart: bodyPart,
-                level: level
-            }
+        axios.post(config.getMoveList, {
+            bodyPart: bodyPart,
+            level: level
         }).then(res => {
             resolve(res);
         }).catch(error => {

@@ -37,8 +37,23 @@ export default {
     };
   },
   mounted() {
+    let temp = 0;
+    if (
+      this.$store.getters.currentUser &&
+      this.$store.getters.currentUser.height
+    ) {
+      let height = this.$store.getters.currentUser.height;
+      let weight = this.$store.getters.currentUser.weight;
+      let BMI = Math.floor((weight / (height * height)) * 10) / 10;
+      if (20 <= BMI && BMI < 21) temp = 5;
+      else if ((18.5 <= BMI && BMI < 20) || (21 <= BMI && BMI < 23)) temp = 4;
+      else if ((16 <= BMI && BMI < 18.5) || (23 <= BMI && BMI < 25)) temp = 3;
+      else if (25 <= BMI && BMI < 30) temp = 2;
+      else temp = 1;
+    }
+    let level = this.$store.getters.currentUser && temp;
     this.$api
-      .getTrainList()
+      .getTrainList(level)
       .then(res => {
         this.trainingInfo = res.data.data;
       })
@@ -51,14 +66,7 @@ export default {
       this.$router.push({ path: `/LessonList/${id}` });
     },
     checkAllTrain() {
-      this.$api
-        .getTrainList()
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      this.$router.push({ path: "/LessonList" });
     }
   }
 };
