@@ -91,6 +91,10 @@ export default new Router({
       name: 'moveshow',
       component: MoveShow
     },
+    {
+      path: '/MoveShow/*',
+      component: MoveShow
+    },
 
     {
       path: '/Setting',

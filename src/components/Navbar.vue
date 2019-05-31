@@ -5,6 +5,9 @@
     mode="horizontal"
     :router="router"
     @select="handleSelect"
+    background-color="#545c64"
+    text-color="#fff"
+    active-text-color="#ffd04b"
   >
     <el-menu-item index="/">首页</el-menu-item>
     <el-menu-item index="/Information">发现精选</el-menu-item>
@@ -288,11 +291,11 @@ export default {
   top: 0;
 }
 .login {
-  float: right;
+  float: right !important;
   padding: 0 30px;
 }
 .userHome {
-  float: right;
+  float: right !important;
   padding: 0 30px;
 }
 a {

@@ -1,21 +1,20 @@
 <template>
   <div class="lesShow-container">
-    <div class="lesson-title" :style="{'background-image': 'url(' + headerImgUrl + ')'}">
+    <div class="lesson-title" :style="{'background-image': 'url(' + lessonInfo.picUrl + ')'}">
       <div class="inner">
-        <h4>瘦腿训练</h4>
-        <p>本课程进行了为期 4 周的效果测试，一共 183 人参加。4 周后瘦腿成功率高达 69.7%，平均每人瘦了 2.19cm，相当于牛仔裤小了 2 个码，效果显著。如果配合减脂训练、饮食控制，还能让瘦腿效果更明显。</p>
+        <h4>{{lessonInfo.title}}</h4>
+        <p>{{lessonInfo.content}}</p>
         <p>1节</p>
         <p>22683910 人训练</p>
       </div>
       <div class="shadow"></div>
     </div>
-    <button @click="test(100001)" class="test">test</button>
     <div class="main-content">
       <div class="main-content-title">
         <p>计划训练 第一节</p>
       </div>
-      <div class="step clearfix" v-for="(item, index) in lessonDetail">
-        <a href="#/MoveShow" target="_blank">
+      <div class="step clearfix" v-for="(item, index) in movement">
+        <a @click="goMovement(item.movementId)" target="_blank">
           <div class="step-background" :style="{'background-image': 'url(' + item.picUrl + ')'}"></div>
           <p class="step-name">{{item.name}}</p>
           <p class="step-payload">{{item.payload}}</p>
@@ -29,8 +28,9 @@
 export default {
   data() {
     return {
+      lessonInfo: {},
       headerImgUrl: "static/img/index_img1.jpg",
-      lessonDetail: [
+      movement: [
         {
           picUrl: "/static/img/Movement/List/show1.jpg",
           name: "侧卧左侧提膝",
@@ -70,29 +70,24 @@ export default {
     };
   },
   methods: {
-    test(id) {
-      this.$api
-        .getLessonDetail(id)
-        .then(res => {
-          console.log(res.data);
-          console.log(res.data.data);
-        })
-        .catch(err => {});
+    goMovement(id) {
+      let newPage = this.$router.resolve({ path: `/MoveShow/${id}` });
+      window.open(newPage.href, "_blank");
     }
+  },
+  mounted() {
+    this.$api
+      .getLessonDetail(this.$route.params.lessonId)
+      .then(res => {
+        this.lessonInfo = res.data.data[0];
+        this.movement = res.data.moveList;
+      })
+      .catch(err => {});
   }
 };
 </script>
 
 <style scoped>
-.test {
-  font-size: 30px;
-  border-color: transparent;
-  color: #409eff;
-  background-color: transparent;
-}
-.test:hover {
-  cursor: pointer;
-}
 .lesShow-container {
   width: 900px;
   height: 100%;
@@ -145,6 +140,9 @@ export default {
 .step:nth-child(2n) {
   margin-right: 35px;
   left: 25px;
+}
+.step a:hover {
+  cursor: pointer;
 }
 .step-background {
   width: 50%;

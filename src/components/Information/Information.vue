@@ -7,7 +7,7 @@
         <router-link to="/InformationList" class="more-information">更多+</router-link>
         <ul class="entries clearfix">
           <li v-for="(informationInfo,index) in information" :key="index">
-            <a href="#" class="imgshow">
+            <a class="imgshow" @click="selectInfo">
               <img v-lazy="informationInfo.src">
               <p class="info-text">{{informationInfo.title}}</p>
             </a>
@@ -19,7 +19,7 @@
         <router-link :to="{ name: 'InformationList'}" class="more-information">更多+</router-link>
         <ul class="entries clearfix">
           <li v-for="(informationInfo,index) in information2" :key="index">
-            <a href="#" class="imgshow">
+            <a class="imgshow" @click="selectInfo">
               <img v-lazy="informationInfo.src">
               <p>{{informationInfo.title}}</p>
             </a>
@@ -78,6 +78,9 @@ export default {
   methods: {
     clickTest() {
       this.$api.test();
+    },
+    selectInfo() {
+      this.$router.push({ path: "/InformationDetail" });
     }
   }
 };
@@ -165,6 +168,7 @@ li {
 .imgshow:hover {
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
   transform: translate3d(0, -3px, 0);
+  cursor: pointer;
 }
 .imgshow img {
   width: 100%;

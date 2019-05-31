@@ -1,36 +1,33 @@
 <template>
   <div class="moveshow">
-    <button @click="test">test</button>
-    {{moveDetail.commonMistake}}
-    <!-- <div class="header-pic">
-      <img :src="movePic">
+    <div class="header-pic">
+      <img :src="moveDetail.picUrl">
     </div>
     <div class="content">
-      <h1 class="name">{{moveName}}</h1>
+      <h1 class="name">{{moveDetail.name}}</h1>
       <h4>步骤</h4>
       <ul>
-        <li v-for="(item, index) in moveStep">{{item}}</li>
+        <li v-for="(item, index) in moveDetail.moveStep">{{item}}</li>
       </ul>
       <h4>呼吸</h4>
       <ul>
-        <li v-for="(item, index) in breathe">{{item}}</li>
+        <li v-for="(item, index) in moveDetail.breathe">{{item}}</li>
       </ul>
       <h4>动作感觉</h4>
       <ul>
-        <li v-for="(item, index) in moveFeeling">{{item}}</li>
+        <li v-for="(item, index) in moveDetail.moveFeeling">{{item}}</li>
       </ul>
       <p></p>
       <p></p>
       <h4>常见错误</h4>
       <ul>
-        <li v-for="(item, index) in commonMistake">{{item}}</li>
+        <li v-for="(item, index) in moveDetail.commonMistake">{{item}}</li>
       </ul>
-
       <h4>细节图示</h4>
       <div class="img">
-        <img :src="movePic">
+        <!-- <img :src="movePic"> -->
       </div>
-    </div>-->
+    </div>
   </div>
 </template>
 
@@ -41,17 +38,18 @@ export default {
       moveDetail: {}
     };
   },
-  methods: {
-    test() {
-      console.log(typeof this.moveDetail.commonMistake);
-      console.log(this.moveDetail.commonMistake);
-    }
-  },
+  methods: {},
   created() {
     this.$api
       .getMoveDetail(this.$route.params.movementId)
       .then(res => {
         this.moveDetail = res.data.data[0];
+        this.moveDetail.moveStep = JSON.parse(this.moveDetail.moveStep);
+        this.moveDetail.breathe = JSON.parse(this.moveDetail.breathe);
+        this.moveDetail.moveFeeling = JSON.parse(this.moveDetail.moveFeeling);
+        this.moveDetail.commonMistake = JSON.parse(
+          this.moveDetail.commonMistake
+        );
       })
       .catch(err => {
         console.log(err);

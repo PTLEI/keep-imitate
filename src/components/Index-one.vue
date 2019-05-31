@@ -121,25 +121,25 @@ export default {
     findTraining() {
       this.$router.push({ name: "training" });
     }
+  },
+  mounted() {
+    // (function() {
+    //   var height = window.innerHeight,
+    //     width = document.body.clientWidth;
+    //   if (typeof heigth != "number") {
+    //     height = document.body.clientHeight;
+    //   }
+    //   console.log(height, width);
+    //   var ratio = height / width;
+    //   document.write(
+    //     "<style>.cal-block{padding-bottom:" +
+    //       ratio * 100 +
+    //       "% !important;}.section-body{padding-top:" +
+    //       ratio * 100 +
+    //       "%;}</style>"
+    //   );
+    // })();
   }
-  // mounted() {
-  //   (function() {
-  //     var height = window.innerHeight,
-  //       width = document.body.clientWidth;
-  //     if (typeof heigth != "number") {
-  //       height = document.body.clientHeight;
-  //     }
-  //     console.log(height, width);
-  //     var ratio = height / width;
-  //     document.write(
-  //       "<style>.cal-block{padding-bottom:" +
-  //         ratio * 100 +
-  //         "% !important;}.section-body{padding-top:" +
-  //         ratio * 100 +
-  //         "%;}</style>"
-  //     );
-  //   })();
-  // }
 };
 </script>
 
@@ -154,12 +154,14 @@ h4 {
   opacity: 0.5;
 }
 /* .cal-block {
+  z-index: 0;
   position: fixed;
   width: 100%;
   left: 0;
   top: 0;
-} */
-/* .section-body {
+}
+.section-body {
+  z-index: 999;
   background-color: #fafafa;
 } */
 

@@ -107,7 +107,7 @@ div {
 }
 .main-content {
   width: 100%;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 .class-list li {
   list-style: none;
