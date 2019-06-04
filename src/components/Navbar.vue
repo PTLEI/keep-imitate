@@ -10,12 +10,12 @@
     active-text-color="#ffd04b"
   >
     <el-menu-item index="/">首页</el-menu-item>
-    <el-menu-item index="/Information">发现精选</el-menu-item>
     <el-submenu index="Lesson">
       <template slot="title">训练课程</template>
       <el-menu-item index="/Training">课程分类</el-menu-item>
       <el-menu-item index="/Movement">动作分类</el-menu-item>
     </el-submenu>
+    <el-menu-item index="/Information">发现精选</el-menu-item>
     <el-menu-item class="login" index v-show="!isLogin">
       <span @click="loginDialogShow">登录</span>
       /
@@ -178,6 +178,7 @@ export default {
       }
     },
     exitUser() {
+      console.log(this.$store.getters.currentUser);
       this.$options.methods.Notice.bind(this)({
         title: "已登出",
         message: "部分功能将失效",
@@ -257,28 +258,28 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(function() {
-      if (sessionStorage.getItem("userInfo")) {
-        // let info1 = JSON.parse(sessionStorage.getItem("userInfo"));
-        let info1 = sessionStorage.getItem("userInfo");
-        this.picUrl = info1.headpic;
-        this.nickname = info1.nickname;
-        this.userid = info1.userid;
-      }
-    });
-    let self = this;
-    Bus.$on("userInfo", e => {
-      self.$nextTick(() => {
-        if (sessionStorage.getItem("userInfo")) {
-          // let info1 = JSON.parse(sessionStorage.getItem("userInfo"));
-          let info1 = sessionStorage.getItem("userInfo");
-          self.picUrl = info1.headpic;
-          self.nickname = info1.nickname;
-          self.userid = info1.userid;
-        }
-      });
-      // console.log(`传来的数据是：${e}`)
-    });
+    // this.$nextTick(function() {
+    //   if (sessionStorage.getItem("userInfo")) {
+    //     // let info1 = JSON.parse(sessionStorage.getItem("userInfo"));
+    //     let info1 = sessionStorage.getItem("userInfo");
+    //     this.picUrl = info1.headpic;
+    //     this.nickname = info1.nickname;
+    //     this.userid = info1.userid;
+    //   }
+    // });
+    // let self = this;
+    // Bus.$on("userInfo", e => {
+    //   self.$nextTick(() => {
+    //     if (sessionStorage.getItem("userInfo")) {
+    //       // let info1 = JSON.parse(sessionStorage.getItem("userInfo"));
+    //       let info1 = sessionStorage.getItem("userInfo");
+    //       self.picUrl = info1.headpic;
+    //       self.nickname = info1.nickname;
+    //       self.userid = info1.userid;
+    //     }
+    //   });
+    //   // console.log(`传来的数据是：${e}`)
+    // });
   }
 };
 </script>
@@ -286,7 +287,7 @@ export default {
 <style scoped>
 .el-menu-demo {
   /* position: fixed; */
-  /* z-index: 999; */
+  z-index: 999;
   width: 100%;
   top: 0;
 }

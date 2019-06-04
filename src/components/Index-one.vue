@@ -1,6 +1,6 @@
 <template>
   <div id="Index-myone">
-    <carousel class="cal-block" height="600px"/>
+    <carousel class="cal-block" height="700px"/>
     <div class="section-body">
       <section class="training-index">
         <h3>量体裁衣 & 多种健身训练供你选择</h3>
@@ -10,21 +10,21 @@
           style="background-image: url(static/img/background-img/storebg.jpg);"
         >
           <div class="training-block">
-            <a href="#/LesShow" class="training-item">
+            <a href="#/LessonList/50001" class="training-item">
               <div class="training-detail" style="background-image: url(static/img/index_img1.jpg)">
                 <div class="training-title">瘦腿训练</div>
                 <div style="text-align: left">13分钟 49千卡</div>
                 <div class="training-population">48，385，041人训练</div>
               </div>
             </a>
-            <a href="#/LesShow" class="training-item">
+            <a href="#/LessonList/50008" class="training-item">
               <div class="training-detail" style="background-image: url(static/img/index_img2.jpg)">
                 <div class="training-title">马甲线养成</div>
                 <div style="text-align: left">12分钟 61千卡</div>
                 <div class="training-population">49，252，615人训练</div>
               </div>
             </a>
-            <a href="#/LesShow" class="training-item">
+            <a href="#/LessonList/50005" class="training-item">
               <div class="training-detail" style="background-image: url(static/img/index_img3.jpg)">
                 <div class="training-title">瑜伽·身体韵律</div>
                 <div style="text-align: left">32分钟 135千卡</div>
@@ -47,6 +47,7 @@
             class="community-entry"
             v-for="(item, index) in infoItem"
             :style="{backgroundImage:'url(' + item.picurl + ')'}"
+            @click="selectInfo"
           >
             <div class="mark"/>
             <h4 class="info-title">{{item.title}}</h4>
@@ -114,18 +115,29 @@ export default {
       ]
     };
   },
+  computed: {
+    carouselHeight: function() {
+      let height = window.innerHeight + "px";
+      console.log(height);
+      return height;
+    }
+  },
   methods: {
+    findTraining() {
+      this.$router.push({ name: "training" });
+    },
     findInfo() {
       this.$router.push({ name: "InformationList" });
     },
-    findTraining() {
-      this.$router.push({ name: "training" });
+    selectInfo() {
+      this.$router.push({ path: "/InformationDetail" });
     }
   },
   mounted() {
     // (function() {
-    //   var height = window.innerHeight,
-    //     width = document.body.clientWidth;
+    //   var height = window.innerHeight;
+    //   var width = window.innerWidth;
+    //   width = document.body.clientWidth;
     //   if (typeof heigth != "number") {
     //     height = document.body.clientHeight;
     //   }
@@ -162,7 +174,7 @@ h4 {
 }
 .section-body {
   z-index: 999;
-  background-color: #fafafa;
+  background: #fafafa;
 } */
 
 .training-wrap,
