@@ -30,19 +30,31 @@
           <label class="l">身高</label>
           <div class="box-value l">
             {{height}}
-            <el-input class="value-input" v-model="tempInfo.height" v-show="editButton"></el-input>
+            <i>m</i>
+            <el-input
+              class="value-input"
+              v-model.number="tempInfo.height"
+              v-show="editButton"
+              step="0.01"
+            ></el-input>
           </div>
         </div>
         <div class="info-box">
           <label class="l">体重</label>
           <div class="box-value l">
             {{weight}}
-            <el-input class="value-input" v-model="tempInfo.weight" v-show="editButton"></el-input>
+            <i>kg</i>
+            <el-input
+              class="value-input"
+              v-model.number="tempInfo.weight"
+              v-show="editButton"
+              step="0.01"
+            ></el-input>
           </div>
         </div>
         <el-button-group class="save-button" v-show="editButton">
-          <el-button type="primary">保存</el-button>
-          <el-button>取消</el-button>
+          <el-button type="primary" @click="messageSave">保存</el-button>
+          <el-button @click="editInfo">取消</el-button>
         </el-button-group>
       </div>
     </div>
@@ -59,17 +71,33 @@ export default {
       height: JSON.parse(sessionStorage.getItem("userInfo")).height,
       weight: JSON.parse(sessionStorage.getItem("userInfo")).weight,
       editButton: false,
-      tempInfo: {
-        nickname: "",
-        sex: "",
-        height: null,
-        weight: null
-      }
+      tempInfo: {},
+      test: ""
     };
   },
   methods: {
     editInfo() {
       this.editButton = !this.editButton;
+    },
+    messageSave() {
+      if (this.tempInfo.height) {
+        this.tempInfo.height = Number(this.tempInfo.height);
+      }
+      if (this.tempInfo.weight) {
+        this.tempInfo.weight = Number(this.tempInfo.weight);
+      }
+      let params = {
+        id: this.$store.state.currentUser.userId,
+        info: this.tempInfo
+      };
+      console.log(params);
+      this.$api
+        .modifyInfo(params)
+        .then(res => {
+          this.tempInfo = {};
+          this.editButton = false;
+        })
+        .catch(err => {});
     }
   }
 };
@@ -129,9 +157,25 @@ export default {
   margin-left: 30px;
   width: 200px;
 }
+.value-input input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: textfield;
+}
+.value-input input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .save-button {
   position: relative;
   left: 60%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: textfield;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 </style>
 

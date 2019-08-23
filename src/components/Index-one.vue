@@ -1,10 +1,12 @@
 <template>
   <div id="Index-myone">
-    <carousel class="cal-block" height="700px"/>
+    <carousel class="cal-block" height="700px" />
     <div class="section-body">
       <section class="training-index">
-        <h3>量体裁衣 & 多种健身训练供你选择</h3>
-        <h4>训练计划针对不同人群、各种器械和阶段健身目标组合编排，适用最广泛的健身场景。</h4>
+        <div class="scroll-show" :class="is_transition[0] ? 'scroll-show-active' : ''">
+          <h3>量体裁衣 & 多种健身训练供你选择</h3>
+          <h4>训练计划针对不同人群、各种器械和阶段健身目标组合编排，适用最广泛的健身场景。</h4>
+        </div>
         <div
           class="training-wrap"
           style="background-image: url(static/img/background-img/storebg.jpg);"
@@ -40,8 +42,11 @@
         </div>
       </section>
       <section class="community-index">
-        <h3>运动资讯 & 分享健身成果，一起进步</h3>
-        <h4>记录每一天的变化，分享好友相互勉励，在 Keep 健身不再是孤独的坚持。</h4>
+        <div class="scroll-show" :class="is_transition[1] ? 'scroll-show-active' : ''">
+          <h3>运动资讯 & 分享健身成果，一起进步</h3>
+          <h4>记录每一天的变化，分享好友相互勉励，在 Keep 健身不再是孤独的坚持。</h4>
+        </div>
+
         <div class="community-wrap">
           <div
             class="community-entry"
@@ -49,8 +54,8 @@
             :style="{backgroundImage:'url(' + item.picurl + ')'}"
             @click="selectInfo"
           >
-            <div class="mark"/>
-            <h4 class="info-title">{{item.title}}</h4>
+            <div class="mark" />
+            <h5 class="info-title">{{item.title}}</h5>
           </div>
           <div class="community-text">
             <h3>体验不一样的生活</h3>
@@ -60,16 +65,18 @@
         </div>
       </section>
       <section class="run-index">
-        <h3>户外跑步 & 精准跑步记录，让你的跑步更加系统</h3>
-        <h4>精准跑步路线记录，跑前热身与跑后拉伸，Keep 提供更加完善和专业的跑步指导。</h4>
+        <div class="scroll-show" :class="is_transition[2] ? 'scroll-show-active' : ''">
+          <h3>户外跑步 & 精准跑步记录，让你的跑步更加系统</h3>
+          <h4>精准跑步路线记录，跑前热身与跑后拉伸，Keep 提供更加完善和专业的跑步指导。</h4>
+        </div>
         <div class="run-wrap" style="background-image: url(static/img/background-img/runbg.jpg);">
           <div class="run-wrap-inner">
             <div class="run-block">
               <div class="run-speed">
-                <img src="static/img/index_img4.jpg">
+                <img src="static/img/index_img4.jpg" />
               </div>
               <div class="run-frequency">
-                <img src="static/img/runchart.png">
+                <img src="static/img/runchart.png" />
               </div>
             </div>
           </div>
@@ -81,6 +88,7 @@
 
 <script>
 import carousel from "@/components/Carousel";
+import { throttle } from "loadsh";
 export default {
   components: {
     carousel
@@ -112,13 +120,13 @@ export default {
           title: "“令人唏嘘、自暴自弃、大腹便便”的雷神是如何练成的？",
           picurl: "/static/img/InformationPic/thor.png"
         }
-      ]
+      ],
+      is_transition: [false, false, false]
     };
   },
   computed: {
     carouselHeight: function() {
       let height = window.innerHeight + "px";
-      console.log(height);
       return height;
     }
   },
@@ -134,6 +142,8 @@ export default {
     }
   },
   mounted() {
+    let window_height = window.innerHeight;
+
     // (function() {
     //   var height = window.innerHeight;
     //   var width = window.innerWidth;
@@ -151,6 +161,20 @@ export default {
     //       "%;}</style>"
     //   );
     // })();
+
+    let title_list = document.getElementsByClassName("scroll-show");
+    let list_length = title_list.length;
+    window.addEventListener(
+      "scroll",
+      throttle(() => {
+        for (let i = 0; i < list_length; i++) {
+          let eleTop = title_list[i].getBoundingClientRect().top;
+          if (eleTop > 0 && eleTop < window_height) {
+            this.$set(this.is_transition, i, true);
+          }
+        }
+      }, 500)
+    );
   }
 };
 </script>
@@ -158,24 +182,27 @@ export default {
 <style scoped>
 h3,
 h4 {
+  padding-top: 50px;
+  margin: 0;
   width: 100%;
   text-align: center;
   color: #584f60;
 }
+
 h4 {
+  padding-bottom: 50px;
   opacity: 0.5;
 }
-/* .cal-block {
-  z-index: 0;
+.cal-block {
   position: fixed;
   width: 100%;
-  left: 0;
-  top: 0;
+  top: 60px;
+  z-index: -1;
 }
 .section-body {
-  z-index: 999;
-  background: #fafafa;
-} */
+  margin-top: 760px;
+  background: #fff;
+}
 
 .training-wrap,
 .run-wrap {
@@ -307,9 +334,9 @@ a .training-detail {
   position: absolute;
   bottom: 0;
   width: 100%;
-  font-family: Tahoma, "Microsoft YaHei", sans-serif;
   font-weight: normal;
-  text-align: left;
+  font-size: 15px;
+  opacity: 0.5;
   text-indent: 1.5em;
   color: #fff;
   white-space: nowrap;
@@ -387,5 +414,21 @@ a:hover,
 a:active {
   background-color: aquamarine;
   transform: scale(1.1, 1.1);
+}
+/* 标题浮动显示 */
+.scroll-show h3,
+h4 {
+  transform: translateY(30px);
+  opacity: 0;
+}
+.scroll-show-active h3 {
+  transition: 1.5s 0.4s;
+  transform: translateY(0);
+  opacity: 1;
+}
+.scroll-show-active h4 {
+  transition: 2s 1s;
+  transform: translateY(0);
+  opacity: 1;
 }
 </style>

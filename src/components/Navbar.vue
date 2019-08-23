@@ -22,7 +22,7 @@
       <span @click="registerDialogShow">注册</span>
     </el-menu-item>
     <el-menu-item class="userHome" index v-show="isLogin">
-      <img :src="userInfo.headpic" style="height: 40px; width: 40px; border-radius:50%">
+      <img :src="userInfo.headpic" style="height: 40px; width: 40px; border-radius:50%" />
       <a href="#" type="text" id="nickname">
         {{userInfo.nickname}}
         <div class="list">
@@ -286,10 +286,10 @@ export default {
 
 <style scoped>
 .el-menu-demo {
-  /* position: fixed; */
-  z-index: 999;
+  position: fixed;
   width: 100%;
   top: 0;
+  border: 0;
 }
 .login {
   float: right !important;
