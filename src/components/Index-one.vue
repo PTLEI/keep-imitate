@@ -90,6 +90,7 @@
 import carousel from "@/components/Carousel";
 import { throttle } from "loadsh";
 export default {
+  name: "Index-myone",
   components: {
     carousel
   },
@@ -139,11 +140,20 @@ export default {
     },
     selectInfo() {
       this.$router.push({ path: "/InformationDetail" });
+    },
+    scrollAnimation() {
+      let title_list = document.getElementsByClassName("scroll-show");
+      let list_length = title_list.length;
+      let window_height = window.innerHeight;
+      for (let i = 0; i < list_length; i++) {
+        let eleTop = title_list[i].getBoundingClientRect().top;
+        if (eleTop > 0 && eleTop < window_height) {
+          this.$set(this.is_transition, i, true);
+        }
+      }
     }
   },
   mounted() {
-    let window_height = window.innerHeight;
-
     // (function() {
     //   var height = window.innerHeight;
     //   var width = window.innerWidth;
@@ -161,20 +171,7 @@ export default {
     //       "%;}</style>"
     //   );
     // })();
-
-    let title_list = document.getElementsByClassName("scroll-show");
-    let list_length = title_list.length;
-    window.addEventListener(
-      "scroll",
-      throttle(() => {
-        for (let i = 0; i < list_length; i++) {
-          let eleTop = title_list[i].getBoundingClientRect().top;
-          if (eleTop > 0 && eleTop < window_height) {
-            this.$set(this.is_transition, i, true);
-          }
-        }
-      }, 500)
-    );
+    document.addEventListener("scroll", throttle(this.scrollAnimation, 500));
   }
 };
 </script>
@@ -422,12 +419,12 @@ h4 {
   opacity: 0;
 }
 .scroll-show-active h3 {
-  transition: 1.5s 0.4s;
+  transition: 1s 0.1s;
   transform: translateY(0);
   opacity: 1;
 }
 .scroll-show-active h4 {
-  transition: 2s 1s;
+  transition: 1.5s 0.7s;
   transform: translateY(0);
   opacity: 1;
 }

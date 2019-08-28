@@ -37,7 +37,7 @@
         </div>
       </a>
     </el-menu-item>
-    <el-dialog :visible.sync="Lvisible" title="登录" width="586px">
+    <el-dialog :visible.sync="Lvisible" title="登录" width="586px" :modal-append-to-body="false">
       <div class="loginform">
         <el-form :model="loginData" label-position="right" label-width="100px">
           <el-form-item label="用户：">
@@ -57,7 +57,7 @@
       <el-button type="info" @click="cancel">取消</el-button>
     </el-dialog>
 
-    <el-dialog :visible.sync="Rvisible" title="注册" width="586px">
+    <el-dialog :visible.sync="Rvisible" title="注册" width="586px" :modal-append-to-body="false">
       <div class="loginform">
         <el-form :model="registerData" label-position="right" label-width="100px">
           <el-form-item label="用户：">
