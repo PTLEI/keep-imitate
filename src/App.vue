@@ -41,6 +41,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   min-width: 760px;
+  background: white;
 }
 body {
   margin: 0;
