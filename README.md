@@ -1,7 +1,7 @@
 
 # keep-imitate
 
-> A Vue.js [project](http://qiao2019.xyz:3000/)
+> [A Vue.js project](http://qiao2019.xyz:3000/)
 
 ## Build Setup
 
