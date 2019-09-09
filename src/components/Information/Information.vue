@@ -8,7 +8,7 @@
         <ul class="entries clearfix">
           <li v-for="(informationInfo,index) in information" :key="index">
             <a class="imgshow" @click="selectInfo">
-              <img v-lazy="informationInfo.src">
+              <img v-lazy="informationInfo.src" />
               <p class="info-text">{{informationInfo.title}}</p>
             </a>
           </li>
@@ -20,7 +20,7 @@
         <ul class="entries clearfix">
           <li v-for="(informationInfo,index) in information2" :key="index">
             <a class="imgshow" @click="selectInfo">
-              <img v-lazy="informationInfo.src">
+              <img v-lazy="informationInfo.src" />
               <p>{{informationInfo.title}}</p>
             </a>
           </li>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import carousel from "@/components/Carousel";
+import carousel from "@/components/SingleComponents/Carousel";
 import Vue from "Vue";
 import Bus from "../Bus";
 export default {
@@ -76,9 +76,6 @@ export default {
     // this.$api.getinformationList();
   },
   methods: {
-    clickTest() {
-      this.$api.test();
-    },
     selectInfo() {
       this.$router.push({ path: "/InformationDetail" });
     }
@@ -99,8 +96,11 @@ export default {
   display: block;
   position: relative;
   height: auto;
-  margin: 1.2rem 0;
+  margin: 1.2rem 0 0;
   padding: 0.2rem 1.4rem 1.4rem;
+}
+.wrapper:not(:last-child) {
+  border-bottom: 1px solid #eff0f1;
 }
 .title {
   position: relative;
@@ -126,7 +126,6 @@ li {
   list-style: none;
   width: 48.2%;
   float: left;
-  margin-top: 2.4rem;
   text-align: center;
 }
 .entries li:nth-child(2n) {

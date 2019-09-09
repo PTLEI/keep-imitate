@@ -23,14 +23,6 @@ export default {
       return this.$route.path.split("/").reverse()[0] === "404";
     }
   }
-  // mounted() {
-  //   document.addEventListener(
-  //     "scroll",
-  //     throttle(() => {
-  //       console.log(document.getElementsByTagName("body")[0].scrollTop);
-  //     }, 500)
-  //   );
-  // }
 };
 </script>
 

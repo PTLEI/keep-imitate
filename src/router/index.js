@@ -19,6 +19,11 @@ import Movement from '@/components/Lesson/Movement'
 import MovementList from '@/components/Lesson/MovementList';
 import MoveShow from '@/components/Show/MoveShow'
 
+// Demo
+import Slogan from '@/components/SingleComponents/Slogan'
+import Chart from '@/components/DEMO/Chart'
+
+// 设置
 import SettingNavbar from '@/components/SelfCenter/Setting/SettingNavbar'
 import Setup from '@/components/SelfCenter/Setting/Setup'
 import TrainHistory from '@/components/SelfCenter/Setting/History'
@@ -94,6 +99,23 @@ export default new Router({
     {
       path: '/MoveShow/*',
       component: MoveShow
+    },
+
+    // Demo列表
+    {
+      path: '/DEMO',
+      name: 'Demo',
+      component: MoveShow
+    },
+    {
+      path: '/Chart',
+      name: 'Chart',
+      component: Chart
+    },
+    {
+      path: '/Slogan',
+      name: 'Slogan',
+      component: Slogan
     },
 
     {

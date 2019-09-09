@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import carousel from "@/components/Carousel";
+import carousel from "@/components/SingleComponents/Carousel";
 import { throttle } from "loadsh";
 export default {
   name: "Index-myone",
@@ -171,6 +171,7 @@ export default {
     //       "%;}</style>"
     //   );
     // })();
+    this.scrollAnimation();
     document.addEventListener("scroll", throttle(this.scrollAnimation, 500));
   }
 };

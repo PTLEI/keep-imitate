@@ -5,17 +5,22 @@
     mode="horizontal"
     :router="router"
     @select="handleSelect"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ffd04b"
+    background-color="#5e5E66"
+    text-color="#FFF"
+    active-text-color="#FFD04B"
   >
     <el-menu-item index="/">首页</el-menu-item>
+    <el-menu-item index="/Information">发现精选</el-menu-item>
     <el-submenu index="Lesson">
       <template slot="title">训练课程</template>
       <el-menu-item index="/Training">课程分类</el-menu-item>
       <el-menu-item index="/Movement">动作分类</el-menu-item>
     </el-submenu>
-    <el-menu-item index="/Information">发现精选</el-menu-item>
+    <el-submenu index="DEMO">
+      <template slot="title">DEMO-L</template>
+      <el-menu-item index="/Slogan">Slogan</el-menu-item>
+      <el-menu-item index="/Chart">Chart</el-menu-item>
+    </el-submenu>
     <el-menu-item class="login" index v-show="!isLogin">
       <span @click="loginDialogShow">登录</span>
       /
