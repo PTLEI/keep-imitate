@@ -1,5 +1,6 @@
 <template>
   <footer class="my-footer">
+    <a class="beian" href="http://www.beian.miit.gov.cn/">浙ICP备19038695号</a>
     <div class="footer-wrapper clearfix">
       <div class="info-left">
         <ul class="footer-list">
@@ -16,7 +17,7 @@
       <div class="info-right">
         <div class="info-test">
           哪有什么天生如此，只是我们天天坚持
-          <br>自律给我自由
+          <br />自律给我自由
         </div>
         <div class="help"></div>
       </div>
@@ -80,5 +81,12 @@ export default {};
   display: block;
   clear: both;
   visibility: hidden;
+}
+
+.beian {
+  display: block;
+  text-align: center;
+  color: #584f60;
+  font-size: 15px;
 }
 </style>
